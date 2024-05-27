@@ -9,7 +9,7 @@ class BorrarUsuarios{
     {
         require_once("Conexion.php");
         $this->db = Conexion::conexion();
-        $this->cedula = $_GET['cedula'];
+        $this->cedula = $_GET['cedula_usuario'];
     }
 
 

@@ -5,4 +5,4 @@
     $admin = new Admin();
     $matriz= $admin->MostrarAdmin();
 
-    require_once ("../vista/Administradores.php");
+    require_once ("../vista/GestionAdmin.php");

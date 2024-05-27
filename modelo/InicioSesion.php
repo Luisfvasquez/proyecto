@@ -15,7 +15,7 @@ class Usuarios{
 
     public function Verificar(){
         //Consulta a la base de datos de los administradores
-        $instruccion = "SELECT * FROM administrador WHERE Cedula=:nombre AND contrasenia_admin=:contrasena";
+        $instruccion = "SELECT * FROM administrador WHERE Cedula_Admin=:nombre AND contrasenia_admin=:contrasena";
        //Consulta a la base de datos de los Usuarios
         $instruccion2 = "SELECT * FROM usuarios WHERE Cedula_usuario=:nombre AND contrasenia_usuario=:contrasena";
         $resultado = $this->db->prepare($instruccion);
