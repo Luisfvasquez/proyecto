@@ -12,13 +12,13 @@ class ConsultaUsuarioActualizar
     {
         require_once("../modelo/Conexion.php");
         $this->db = Conexion::conexion();
-        $this->cedula = $_GET['cedula_usuario'];
+        $this->cedula = $_GET['cedula'];
     }
 
     public function actus()
     {
 
-        $instrunccion = "SELECT * FROM Usuarios WHERE Cedula_usuario=:cedula";
+        $instrunccion = "SELECT * FROM Usuario WHERE Cedula=:cedula";
 
         $resultado = Conexion::conexion()->prepare($instrunccion);
 

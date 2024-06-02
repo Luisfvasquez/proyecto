@@ -22,24 +22,24 @@
    
     <form action='../controlador/ActualizarAdmin.php' method='post' enctype='multipart/form-data' >
          <label for="">Cedula</label>  
-         <input type="text" name="Cedula_admin" id="" readonly value="<?php  echo $datos['Cedula_Admin'] ?>">
+         <input type="text" name="Cedula" id="" readonly value="<?php  echo $datos['Cedula'] ?>">
          <br>
          <label for="">Nombre</label>  
-         <input type="text" name="Nombre_admin" id="" value="<?php echo $datos['Nombre_admin'] ?>">
+         <input type="text" name="Nombre" id="" value="<?php echo $datos['Nombre'] ?>">
          <br>
          <label for="">Correo</label>  
-         <input type="text" name="Correo_admin" id="" value="<?php  echo $datos['Correo_admin']?>">
+         <input type="text" name="Correo" id="" value="<?php  echo $datos['Correo']?>">
          <br>
          <label for="">Telefono</label>  
-         <input type="text" name="Telefono_admin" id="" value="<?php echo $datos['Telefono_admin'] ?>">
+         <input type="text" name="Telefono" id="" value="<?php echo $datos['Telefono'] ?>">
          <br>
          <label for="">Rol</label>  
          <input type="text" name="" id="" readonly value="<?php echo $datos['Rol_id'] ?>">
          <br>
          <label for="">Foto</label>  
-        <input type="file" name="imagen" id="" value="<?php $datos['Foto_admin'] ?>">
+        <input type="file" name="imagen" id="" value="<?php $datos['imgen'] ?>">
         <br>
-        <input type="image" src="/intranet/uploads/<?php echo $datos["Foto_admin"]?>" alt="" width='200px'>
+        <input type="image" src="/intranet/uploads/<?php echo $datos["imagen"]?>" alt="" width='200px'>
          <br>
         <input type="submit" value="Actualizar">
 

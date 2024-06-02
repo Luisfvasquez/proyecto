@@ -20,10 +20,10 @@ class ActualizarAdmin{
     {
         require_once("Conexion.php");
         $this->db=Conexion::conexion();
-        $this->cedula=$_POST['Cedula_admin'];
-        $this->nombre=$_POST['Nombre_admin'];
-        $this->correo=$_POST['Correo_admin'];
-        $this->telefono=$_POST['Telefono_admin'];
+        $this->cedula=$_POST['Cedula'];
+        $this->nombre=$_POST['Nombre'];
+        $this->correo=$_POST['Correo'];
+        $this->telefono=$_POST['Telefono'];
         $this->imagen = $_FILES["imagen"]["name"]; 
        
         //Recibir datos de imagen
@@ -36,7 +36,7 @@ class ActualizarAdmin{
     public function ActualizarAdmin(){
         
 
-        $instruccion = "UPDATE administrador SET Nombre_admin=:nombre,Telefono_admin=:telefono,Correo_admin=:correo,Foto_admin=:foto WHERE Cedula_admin=$this->cedula";
+        $instruccion = "UPDATE usuario SET Nombre=:nombre,Telefono=:telefono,Correo=:correo,imagen=:imgen WHERE Cedula=$this->cedula";
 
         $resultado =$this->db->prepare($instruccion);
 
@@ -52,7 +52,7 @@ class ActualizarAdmin{
             }
               
        
-        $resultado->execute(array(":nombre" => $this->nombre, ":telefono" => $this->telefono,":correo" => $this->correo,":foto"=>$this->imagen));
+        $resultado->execute(array(":nombre" => $this->nombre, ":telefono" => $this->telefono,":correo" => $this->correo,":imgen"=>$this->imagen));
 
        
 

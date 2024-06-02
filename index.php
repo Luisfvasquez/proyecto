@@ -23,7 +23,7 @@
 
     <h1>productos</h1>
 
-    <h2><a href="controlador/InicioSesion.php">iniciar sesion</a></h2>
+    <h2><a href="vista/InicioSesion.php">iniciar sesion</a></h2>
 
     <h2><a href="vista/Registro.php">Registrar</a></h2>
 

@@ -32,14 +32,14 @@
     <?php foreach ($matriz as $administradores) : ?>
 
       <tr>
-        <td><?php echo $administradores["Cedula_Admin"]; ?> </td>
-        <td><?php echo $administradores["Nombre_admin"]; ?></td>
-        <td><?php echo $administradores["Correo_admin"]; ?></td>
-        <td><?php echo $administradores["Telefono_admin"]; ?></td>
+        <td><?php echo $administradores["Cedula"]; ?> </td>
+        <td><?php echo $administradores["Nombre"]; ?></td>
+        <td><?php echo $administradores["Correo"]; ?></td>
+        <td><?php echo $administradores["Telefono"]; ?></td>
         <td><?php echo $administradores["Rol"]; ?></td>
-        <td><input type="image" src="/intranet/uploads/<?php echo $administradores["Foto_admin"]?>" alt="" width='200px'> </td>
-        <td><a href="../controlador/ConsultaActualizarAdmin.php?cedula_admin=<?php echo $administradores['Cedula_Admin'] ?>"><input type="button" value="Actualizar"></a></td>
-        <td><a href="../controlador/BorrarAdmin.php?cedula_admin=<?php echo $administradores['Cedula_Admin'] ?>"><input type="button" value="Borrar"></a></td>
+        <td><input type="image" src="/intranet/uploads/<?php echo $administradores["imagen"]?>" alt="" width='200px'> </td>
+        <td><a href="../controlador/ConsultaActualiza.php?cedula_admin=<?php echo $administradores['Cedula'] ?>"><input type="button" value="Actualizar"></a></td>
+        <td><a href="../controlador/BorrarAdmin.php?cedula=<?php echo $administradores['Cedula'] ?>"><input type="button" value="Borrar"></a></td>
       </tr>
 
 

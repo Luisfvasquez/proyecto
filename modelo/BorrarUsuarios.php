@@ -9,12 +9,12 @@ class BorrarUsuarios{
     {
         require_once("Conexion.php");
         $this->db = Conexion::conexion();
-        $this->cedula = $_GET['cedula_usuario'];
+        $this->cedula = $_GET['cedula'];
     }
 
 
     public function Borrar(){
-        $instruccion = ("DELETE FROM USUARIOS WHERE CEDULA_USUARIO = :cedula");
+        $instruccion = ("DELETE FROM USUARIO WHERE CEDULA = :cedula");
         $resultado = $this->db->prepare($instruccion);
 
         $resultado->execute(array(':cedula' => $this->cedula));

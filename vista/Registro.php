@@ -28,7 +28,7 @@
         <label for="Foto">Foto</label>
        <input type="file" name="imagen" id="imagen">
         <br>
-       
+        
         <br>
         <input type="submit" value="Registrar">
 

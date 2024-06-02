@@ -12,13 +12,13 @@ class ConsultaAdminActualizar
     {
         require_once("../modelo/Conexion.php");
         $this->db = Conexion::conexion();
-        $this->cedula = $_GET['cedula_admin'];
+        $this->cedula = $_GET['cedula'];
     }
 
     public function actus()
     {
 
-        $instrunccion = "SELECT * FROM administrador WHERE Cedula_Admin=:cedula";
+        $instrunccion = "SELECT * FROM usuario WHERE Cedula=:cedula";
 
         $resultado = Conexion::conexion()->prepare($instrunccion);
 

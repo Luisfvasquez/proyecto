@@ -20,10 +20,10 @@ class ActualizarUsuario{
     {
         require_once("Conexion.php");
         $this->db=Conexion::conexion();
-        $this->cedula=$_POST['Cedula_usuario'];
-        $this->nombre=$_POST['Nombre_usuario'];
-        $this->correo=$_POST['Correo_usuario'];
-        $this->telefono=$_POST['Telefono_usuario'];
+        $this->cedula=$_POST['Cedula'];
+        $this->nombre=$_POST['Nombre'];
+        $this->correo=$_POST['Correo'];
+        $this->telefono=$_POST['Telefono'];
         $this->imagen = $_FILES["imagen"]["name"]; 
        
         //Recibir datos de imagen
@@ -36,7 +36,7 @@ class ActualizarUsuario{
     public function ActualizarUsuario(){
         
 
-        $instruccion = "UPDATE usuarios SET Nombre_usuario=:nombre,Telefono_usuario=:telefono,Correo_usuario=:correo,Foto_usuario=:foto WHERE Cedula_usuario=$this->cedula";
+        $instruccion = "UPDATE usuario SET Nombre=:nombre,Telefono=:telefono,Correo=:correo,imagen=:foto WHERE Cedula=$this->cedula";
 
         $resultado =$this->db->prepare($instruccion);
 

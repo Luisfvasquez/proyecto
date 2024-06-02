@@ -14,7 +14,7 @@ class RegistroUsuarios{
     private $tipo;
     private $nombreig;
     private $carpeta;
-
+    private $cifrado;
 
     public function __construct()
     {
@@ -24,7 +24,8 @@ class RegistroUsuarios{
         $this->nombre=$_POST['nombre'];
         $this->correo=$_POST['correo'];
         $this->telefono=$_POST['telefono'];
-        $this->contrasena=$_POST['contrasena'];
+        $this->contrasena=($_POST['contrasena']);
+        $this->cifrado=password_hash($this->contrasena, PASSWORD_DEFAULT);
         $this->imagen = $_FILES["imagen"]["name"]; 
         $this->rol=3; 
        
@@ -38,7 +39,7 @@ class RegistroUsuarios{
     public function RegistrarUsuarios(){
         
 
-        $instruccion = "INSERT INTO usuarios (Cedula_usuario,Contrasenia_Usuario,Nombre_Usuario,Telefono_Usuario,Correo_Usuario,Rol_id,Foto_Usuario) VALUES (:cedula,:contrasenia,:nombre,:telefono,:correo,:rol,:foto)";
+        $instruccion = "INSERT INTO usuario (Cedula,Contrasenia,Nombre,Telefono,Correo,Rol_id,imagen) VALUES (:cedula,:contrasenia,:nombre,:telefono,:correo,:rol,:foto)";
 
         $resultado =$this->db->prepare($instruccion);
 
@@ -55,7 +56,7 @@ class RegistroUsuarios{
             }
                      
         
-            $resultado->execute(array(":cedula" => $this->cedula, ":contrasenia" => $this->contrasena, ":nombre" => $this->nombre, ":telefono" => $this->telefono,":correo" => $this->correo,":rol"=> $this->rol,":foto"=>$this->imagen));
+            $resultado->execute(array(":cedula" => $this->cedula, ":contrasenia" => $this->cifrado, ":nombre" => $this->nombre, ":telefono" => $this->telefono,":correo" => $this->correo,":rol"=> $this->rol,":foto"=>$this->imagen));
 
        
 
