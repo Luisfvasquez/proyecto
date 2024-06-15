@@ -10,6 +10,8 @@ class RegistroUsuarios{
     private $telefono;
     private $imagen;
     private $rol;
+
+    
     private $tamanio;
     private $tipo;
     private $nombreig;
@@ -39,7 +41,7 @@ class RegistroUsuarios{
     public function RegistrarUsuarios(){
         
 
-        $instruccion = "INSERT INTO usuario (Cedula,Contrasenia,Nombre,Telefono,Correo,Rol_id,imagen) VALUES (:cedula,:contrasenia,:nombre,:telefono,:correo,:rol,:foto)";
+        $instruccion = "INSERT INTO usuario (Cedula,Contrasenia,Nombre_usuario,Telefono,Correo,Rol_id,imagen) VALUES (:cedula,:contrasenia,:nombre,:telefono,:correo,:rol,:foto)";
 
         $resultado =$this->db->prepare($instruccion);
 

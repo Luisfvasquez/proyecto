@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="../index.php">Home2</a>
+    <a href="../index.php">Home</a>
 
     <h1>Inicio Sesion</h1>    
 

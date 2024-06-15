@@ -36,7 +36,7 @@ class ActualizarAdmin{
     public function ActualizarAdmin(){
         
 
-        $instruccion = "UPDATE usuario SET Nombre=:nombre,Telefono=:telefono,Correo=:correo,imagen=:imgen WHERE Cedula=$this->cedula";
+        $instruccion = "UPDATE usuario SET Nombre_usuario=:nombre,Telefono=:telefono,Correo=:correo,imagen=:imgen WHERE Cedula=$this->cedula";
 
         $resultado =$this->db->prepare($instruccion);
 

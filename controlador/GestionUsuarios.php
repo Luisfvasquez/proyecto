@@ -6,4 +6,4 @@
     $matriz = $usuarios->MostrarUsuarios();
 
 
-    require_once ("../vista/GestionUsuarios.php");
+    require_once ("../vista/administrador/GestionUsuarios.php");

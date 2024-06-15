@@ -11,10 +11,10 @@
   <?php
   session_start();
   if (!isset($_SESSION['admin'])) {
-    header("location:InicioSesion.php");
+    header("location:../InicioSesion.php");
   }
   ?>
-  <a href="../vista/VistaAdmin.php">Volver</a>
+  <a href="../vista/administrador/VistaAdmin.php">Volver</a>
   <h1>Gestionar Usuarios</h1>
 
 
@@ -33,7 +33,7 @@
 
       <tr>
         <td><?php echo $administradores["Cedula"]; ?> </td>
-        <td><?php echo $administradores["Nombre"]; ?></td>
+        <td><?php echo $administradores["Nombre_usuario"]; ?></td>
         <td><?php echo $administradores["Correo"]; ?></td>
         <td><?php echo $administradores["Telefono"]; ?></td>
         <td><?php echo $administradores["Rol"]; ?></td>

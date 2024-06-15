@@ -8,14 +8,14 @@
 </head>
 
 <body>
-        <?php
-        session_start();
-        if (!isset($_SESSION['admin'])) {
-            header("location:InicioSesion.php");
-        }
-        ?>
+<?php 
+    session_start();
+    if(!isset($_SESSION['admin']) ){
+        header("location:../InicioSesion.php");
+    }
+    ?>
 
-   <a href="../controlador/GestionUsuarios.php">Volver</a>
+   <a href="../../controlador/GestionUsuarios.php">Volver</a>
 
     <h1>Actualizar datos </h1>
     
@@ -25,7 +25,7 @@
          <input type="text" name="Cedula" id="" readonly value="<?php  echo $datos['Cedula'] ?>">
          <br>
          <label for="">Nombre</label>  
-         <input type="text" name="Nombre" id="" value="<?php echo $datos['Nombre'] ?>">
+         <input type="text" name="Nombre" id="" value="<?php echo $datos['Nombre_usuario'] ?>">
          <br>
          <label for="">Correo</label>  
          <input type="text" name="Correo" id="" value="<?php  echo $datos['Correo']?>">

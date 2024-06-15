@@ -19,7 +19,7 @@ class BorrarUsuarios{
 
         $resultado->execute(array(':cedula' => $this->cedula));
 
-        header("Location: ../controlador/MostrarUsuarios.php");
+        header("Location:../controlador/GestionUsuarios.php");
     }
 
 

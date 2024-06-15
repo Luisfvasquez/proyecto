@@ -36,7 +36,7 @@ class ActualizarUsuario{
     public function ActualizarUsuario(){
         
 
-        $instruccion = "UPDATE usuario SET Nombre=:nombre,Telefono=:telefono,Correo=:correo,imagen=:foto WHERE Cedula=$this->cedula";
+        $instruccion = "UPDATE usuario SET Nombre_usuario=:nombre,Telefono=:telefono,Correo=:correo,imagen=:foto WHERE Cedula=$this->cedula";
 
         $resultado =$this->db->prepare($instruccion);
 

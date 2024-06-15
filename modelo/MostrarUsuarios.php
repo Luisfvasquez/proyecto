@@ -16,7 +16,7 @@ class Usuarios{
 
         public function MostrarUsuarios(){
             $instruccion = ("SELECT * FROM USUARIO 
-            INNER JOIN rol on usuario.Rol_id=rol.id");
+            INNER JOIN rol on usuario.Rol_id=rol.id WHERE Rol_id=3");
 
             $resultado = $this->db->prepare($instruccion);
 

@@ -36,12 +36,14 @@ class Usuarios {
                 if ($usuario['Rol_id'] == 2) {
 
                     $_SESSION['admin'] = $this->nombre;
-                    return header("location:../vista/VistaAdmin.php");
+                    $_SESSION['nombre'] = $usuario['Nombre_usuario'];
+                    return header("location:../vista/administrador/VistaAdmin.php");
 
                 } elseif ($usuario['Rol_id'] == 3) {
 
                     $_SESSION['usuario'] = $this->nombre;
-                    return header("location:../vista/Home.php");
+                    $_SESSION['nombre'] = $usuario['Nombre_usuario'];
+                    return header("location:../Controlador/VistaUsuario.php");
 
                 }
             }

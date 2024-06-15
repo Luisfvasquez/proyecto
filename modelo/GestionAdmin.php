@@ -15,7 +15,8 @@
 
         public function MostrarAdmin(){
             $instruccion = ("SELECT * FROM usuario 
-        INNER JOIN rol ON usuario.Rol_id =rol.Id" );
+        INNER JOIN rol ON usuario.Rol_id =rol.Id WHERE Rol_id=2" );
+
             $resultado = $this->db->prepare($instruccion);
             $resultado->execute(array());
 

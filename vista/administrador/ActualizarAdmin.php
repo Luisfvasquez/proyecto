@@ -8,12 +8,12 @@
 </head>
 
 <body>
-        <?php
-        session_start();
-        if (!isset($_SESSION['admin'])) {
-            header("location:InicioSesion.php");
-        }
-        ?>
+<?php 
+    session_start();
+    if(!isset($_SESSION['admin']) ){
+        header("location:../InicioSesion.php");
+    }
+    ?>
 
    <a href="../controlador/GestionAdmin.php">Volver</a>
 
@@ -25,7 +25,7 @@
          <input type="text" name="Cedula" id="" readonly value="<?php  echo $datos['Cedula'] ?>">
          <br>
          <label for="">Nombre</label>  
-         <input type="text" name="Nombre" id="" value="<?php echo $datos['Nombre'] ?>">
+         <input type="text" name="Nombre" id="" value="<?php echo $datos['Nombre_usuario'] ?>">
          <br>
          <label for="">Correo</label>  
          <input type="text" name="Correo" id="" value="<?php  echo $datos['Correo']?>">
@@ -37,7 +37,7 @@
          <input type="text" name="" id="" readonly value="<?php echo $datos['Rol_id'] ?>">
          <br>
          <label for="">Foto</label>  
-        <input type="file" name="imagen" id="" value="<?php $datos['imgen'] ?>">
+        <input type="file" name="imagen" id="" value="<?php $datos['imagen'] ?>">
         <br>
         <input type="image" src="/intranet/uploads/<?php echo $datos["imagen"]?>" alt="" width='200px'>
          <br>
