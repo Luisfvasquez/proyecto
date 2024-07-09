@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro</title>
 </head>
 <body>
 <a href="../index.php">Home</a>
@@ -23,7 +23,8 @@
         <input type="text" name="telefono" id="telefono" required>
         <br>
         <label for="Correo">Correo</label>
-        <input type="text" name="correo" id="correo" required>
+        <input type="email" name="correo" id="correo" required>
+        
         <br>
         <label for="Foto">Foto</label>
        <input type="file" name="imagen" id="imagen">

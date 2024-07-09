@@ -3,12 +3,6 @@ require_once("../modelo/GestionInventario.php");
 
 $productos = new Productos;
 
-session_start();
-if (isset($_SESSION["admin"])) {
-
-    $matriz = $productos->MostrarProductosadmin();
-} else {
-    $matriz = $productos->MostrarProductos();
-}
+$matriz = $productos->MostrarProductosCompra();
 
 require_once("../vista/administrador/GestionInventario.php");

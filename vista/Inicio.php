@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inicio</title>
 </head>
 <body>
     
@@ -54,14 +54,17 @@
                 <?php echo $producto['Descripcion'] ?>
             </td>
 
-            <td >
-                <?php echo $producto['Imagen'] ?>
-            </td>
+            <td>
+            <img src="/intranet/uploads/<?php echo $producto['Imagen']  ?>" alt="" width="100px">
+             </td>
 
             <td >
             <?php  $precio_total=$producto['Precio_producto']+($producto['Precio_producto']*0.3) ;
                 echo $precio_total;
             ?>
+            </td>
+            <td>
+                <a href="vista/InicioSesion.php"><input type="button" value="Comprar"></a>
             </td>
             <br>
         </tr>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Compra</title>
 </head>
 <body>
 <?php 
@@ -29,11 +29,11 @@
         <br>
         <label for="">Categoria</label>
        
-
+      
         <select name="categoria_id" id="categoria_id" >
           <option selected disabled >Seleccionar categoria</option>
           <?php foreach($matriz as $categorias): ?>
-            <br>
+            
             <option value="<?php echo $categorias["idCategoria"] ?>"><?php echo $categorias["Nombre_categoria"] ?></option>
             <?php endforeach; ?>
         </select>

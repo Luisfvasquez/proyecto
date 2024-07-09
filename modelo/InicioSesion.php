@@ -43,6 +43,10 @@ class Usuarios {
 
                     $_SESSION['usuario'] = $this->nombre;
                     $_SESSION['nombre'] = $usuario['Nombre_usuario'];
+                    $_SESSION['telefono'] = $usuario['Telefono'];
+                    $_SESSION['correo'] = $usuario['Correo'];
+                    $_SESSION['rol'] = $usuario['Rol_id'];
+                    $_SESSION['imagen'] = $usuario['imagen'];
                     return header("location:../Controlador/VistaUsuario.php");
 
                 }

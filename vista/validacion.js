@@ -5,6 +5,7 @@ const correo = document.getElementById('correo');
 const contrasena = document.getElementById('contrasena');
 const editar = document.getElementById('editar'); // Asegúrate de que el ID sea correcto
 
+
 editar.addEventListener('click', () => {
     // Si los campos están habilitados, deshabilítalos; de lo contrario, habilítalos
     if (cedula.disabled) {
@@ -12,10 +13,12 @@ editar.addEventListener('click', () => {
         nombre.disabled = false;
         correo.disabled = false;
         contrasena.disabled = false;
+    
+
     } else {
         cedula.disabled = true;
         nombre.disabled = true;
         correo.disabled = true;
         contrasena.disabled = true;
-    }
+    } 
 });

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Gestion usuarios</title>
 </head>
 
 <body>
@@ -47,6 +47,7 @@
     <?php endforeach; ?>
   </table>
 
+  <a href="../vista/administrador/ReportesUsuario.php">Imprimir reportes</a>
 
 </body>
 

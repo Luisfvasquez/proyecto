@@ -20,7 +20,7 @@ class ConsultaAdminActualizar
 
         $instrunccion = "SELECT * FROM usuario WHERE Cedula=:cedula";
 
-        $resultado = Conexion::conexion()->prepare($instrunccion);
+        $resultado = $this->db->prepare($instrunccion);
 
         $resultado->execute(array(":cedula" => $this->cedula));
 

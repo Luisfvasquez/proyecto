@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin</title>
 </head>
 <body>
     <?php 
@@ -17,8 +17,9 @@
     <h2><a href="../../controlador/VistaCompra.php">Registro Productos</a></h2>
     <h2><a href="../../controlador/GestionAdmin.php">Gestion admin</a></h2>
     <h2><a href="../../controlador/GestionUsuarios.php">Gestion usuario</a></h2>
+     <h2><a href="../../controlador/RegistroCompraVenta.php">Registros de compras y ventas</a></h2>
     <h2><a href="../../controlador/GestionInventario.php">Gestion del inventario</a></h2>
-    <a href="../../index.php">Home</a>
+    
 
 
     <a href="../../controlador/CierreSesion.php">Cerrar Sesion</a>

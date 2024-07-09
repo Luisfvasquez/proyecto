@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Actualizar usuario</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
     }
     ?>
 
-   <a href="../../controlador/GestionUsuarios.php">Volver</a>
+   <a href="../controlador/GestionUsuarios.php">Volver</a>
 
     <h1>Actualizar datos </h1>
     
@@ -42,7 +42,7 @@
         <input type="image" src="/intranet/uploads/<?php echo $datos["imagen"]?>" alt="" width='200px'>
          <br>
         <input type="submit" value="Actualizar">
-
+    
          </form>
 
   

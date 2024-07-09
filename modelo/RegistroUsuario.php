@@ -49,6 +49,11 @@ class RegistroUsuarios{
         if(($this->tipo=="image/jpeg")||($this->tipo=="image/png")||($this->tipo=="image/jpg")||($this->tipo=="image/gif")){
             //ruta de la carpeta destino en servidor
             $this->carpeta=$_SERVER["DOCUMENT_ROOT"]. "/intranet/uploads/";
+
+            if (!is_dir($this->carpeta)) {
+                // Creamos la carpeta si no existe
+                mkdir($this->carpeta, 0777, true); // Permisos 777 para creación de carpetas anidadas
+              }
         
             //movemos la imagen del direccotio temporal al directorio escogido
             move_uploaded_file($_FILES["imagen"]["tmp_name"],$this->carpeta.$this->nombreig);
