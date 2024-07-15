@@ -1,7 +1,7 @@
 <?php
 
 class Usuarios{
-
+        //Atributos
         private $db;
         private $usuarios;
 
@@ -14,19 +14,21 @@ class Usuarios{
         }
 
 
-        public function MostrarUsuarios(){
+        public function MostrarUsuarios(){//Metodo que se encarga de mostrar los datos
+            //Instruccion a ejecutar en la BD
             $instruccion = ("SELECT * FROM USUARIO 
             INNER JOIN rol on usuario.Rol_id=rol.id WHERE Rol_id=3");
 
-            $resultado = $this->db->prepare($instruccion);
+            $resultado = $this->db->prepare($instruccion);//prepara la instruccion
 
-            $resultado->execute(array());
+            $resultado->execute(array());//Ejecuta la instruccion
 
+            //Almacena los datos en un arreglo
             while ($filas = $resultado->fetch(PDO::FETCH_ASSOC)) {
                 $this->usuarios[] = $filas;
             }
     
-            return $this->usuarios;
+            return $this->usuarios;//Retorna el arreglo con los datos
         }
 
 

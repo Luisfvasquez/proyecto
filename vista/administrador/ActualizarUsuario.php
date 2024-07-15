@@ -4,48 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar usuario</title>
+    <title>Actualizar Usuario</title>
+    <link rel="stylesheet" href="../estilos/bootstrap.min.css">
+
 </head>
 
 <body>
-<?php 
+
+    <?php
     session_start();
-    if(!isset($_SESSION['admin']) ){
+    if (!isset($_SESSION['admin'])) {
         header("location:../InicioSesion.php");
     }
+
     ?>
 
-   <a href="../controlador/GestionUsuarios.php">Volver</a>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <a href="../controlador/GestionUsuarios.php" class="btn btn-primary">Volver</a>
+            </div>
+        </div>
 
-    <h1>Actualizar datos </h1>
-    
-   
-    <form action='../controlador/ActualizarUsuarios.php' method='post' enctype='multipart/form-data' >
-         <label for="">Cedula</label>  
-         <input type="text" name="Cedula" id="" readonly value="<?php  echo $datos['Cedula'] ?>">
-         <br>
-         <label for="">Nombre</label>  
-         <input type="text" name="Nombre" id="" value="<?php echo $datos['Nombre_usuario'] ?>">
-         <br>
-         <label for="">Correo</label>  
-         <input type="text" name="Correo" id="" value="<?php  echo $datos['Correo']?>">
-         <br>
-         <label for="">Telefono</label>  
-         <input type="text" name="Telefono" id="" value="<?php echo $datos['Telefono'] ?>">
-         <br>
-         <label for="">Rol</label>  
-         <input type="text" name="" id="" readonly value="<?php echo $datos['Rol_id'] ?>">
-         <br>
-         <label for="">Foto</label>  
-        <input type="file" name="imagen" id="" value="<?php $datos['imagen'] ?>">
-        <br>
-        <input type="image" src="/intranet/uploads/<?php echo $datos["imagen"]?>" alt="" width='200px'>
-         <br>
-        <input type="submit" value="Actualizar">
-    
-         </form>
+        <div class="row mt-4">
+            <div class="col">
+                <h1>Actualizar Usuario</h1>
+                <form action="../controlador/ActualizarUsuarios.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="Cedula">Cedula</label>
+                        <input type="text" class="form-control" id="Cedula" name="Cedula" readonly value="<?php echo $datos['Cedula'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" class="form-control" id="Nombre" name="Nombre" value="<?php echo $datos['Nombre_usuario'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Correo">Correo</label>
+                        <input type="text" class="form-control" id="Correo" name="Correo" value="<?php echo $datos['Correo'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Telefono">Telefono</label>
+                        <input type="text" class="form-control" id="Telefono" name="Telefono" value="<?php echo $datos['Telefono'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="Rol">Rol</label>
+                        <input type="text" class="form-control" id="Rol" name="Rol" readonly value="<?php echo $datos['Rol_id'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="imagen">Foto</label><br>
+                        <input type="file" class="form-control-file" id="imagen" name="imagen">
+                        <br>
+                        <img src="/intranet/uploads/<?php echo $datos['imagen'] ?>" alt="Imagen del usuario" width="200px">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-  
+    <script src="../estilos/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

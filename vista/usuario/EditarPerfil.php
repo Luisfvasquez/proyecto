@@ -4,42 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
+    <link rel="stylesheet" href="../../estilos/bootstrap.min.css">
+    <title>Editar Perfil</title>
 </head>
 
-<body>
+<body class="bg-light">
     <?php
     session_start();
     if (!isset($_SESSION['usuario'])) {
         header("location:InicioSesion.php");
     }
     ?>
-    <a href="Perfil.php">Volver</a>
-  
-    <br>
-    <form action="../../controlador/ActualizarUsuarios.php" method="post" enctype='multipart/form-data'>
-
-        <label for="">Cedula</label>
-    <input type="text" name="Cedula" id="Cedula" value="<?php echo $_SESSION['usuario'] ?>" readonly><br>
-        <label for="">Nombre</label>
-    <input type="text" name="Nombre" id="Nombre" value="<?php echo $_SESSION['nombre'] ?>"><br>
-        <label for="">Telefono</label>
-    <input type="text" name="Telefono" id="Telefono" value="<?php echo $_SESSION['telefono'] ?>"><br>
-        <label for="">Correo</label>
-    <input type="text" name="Correo" id="Correo" value="<?php echo $_SESSION['correo'] ?>"><br>
-        <label for="">Imagen</label><br>
-    <img src="/intranet/uploads/<?php echo $_SESSION['imagen']  ?>" alt="" width="100px">
-    <br>
-    <input type="file" name="imagen" id="imagen">
-    <br>
-    <br>
-       <input type="submit" value="Actualizar">
-    </form>
-    <script>
-
-
-    </script>
-
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        <h1 class="card-title">Editar Perfil</h1>
+                    </div>
+                    <div class="card-body">
+                        <a href="Perfil.php" class="btn btn-danger">Volver</a>
+                        <form action="../../controlador/ActualizarUsuarios.php" method="post" enctype='multipart/form-data' class="mt-4">
+                            <div class="form-group">
+                                <label for="Cedula">Cédula</label>
+                                <input type="text" class="form-control" name="Cedula" id="Cedula" value="<?php echo $_SESSION['usuario']; ?>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="Nombre">Nombre</label>
+                                <input type="text" class="form-control" name="Nombre" id="Nombre" value="<?php echo $_SESSION['nombre']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="Telefono">Teléfono</label>
+                                <input type="text" class="form-control" name="Telefono" id="Telefono" value="<?php echo $_SESSION['telefono']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="Correo">Correo</label>
+                                <input type="email" class="form-control" name="Correo" id="Correo" value="<?php echo $_SESSION['correo']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="imagen">Imagen</label><br>
+                                <img src="/intranet/uploads/<?php echo $_SESSION['imagen']; ?>" alt="" width="100px" class="img-thumbnail mb-3">
+                                <input type="file" class="form-control-file" name="imagen" id="imagen">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

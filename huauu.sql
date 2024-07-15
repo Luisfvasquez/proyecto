@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-07-2024 a las 15:55:54
+-- Tiempo de generación: 15-07-2024 a las 19:32:43
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -94,6 +94,14 @@ CREATE TABLE `detalles_factura` (
   `Precio_unitario` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `detalles_factura`
+--
+
+INSERT INTO `detalles_factura` (`Factura_Id`, `Producto_Id`, `Cantidad_producto`, `Precio_unitario`) VALUES
+(1, 2, 1, 13),
+(2, 1, 1, 26);
+
 -- --------------------------------------------------------
 
 --
@@ -103,9 +111,16 @@ CREATE TABLE `detalles_factura` (
 CREATE TABLE `factura` (
   `IdFactura` int NOT NULL,
   `Usuario_cedula` int NOT NULL,
-  `Metodo_id` int NOT NULL,
   `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `factura`
+--
+
+INSERT INTO `factura` (`IdFactura`, `Usuario_cedula`, `Fecha`) VALUES
+(1, 28329308, '2024-07-15 18:59:05'),
+(2, 28329308, '2024-07-15 18:59:10');
 
 -- --------------------------------------------------------
 
@@ -123,8 +138,8 @@ CREATE TABLE `inventario` (
 --
 
 INSERT INTO `inventario` (`Producto_id`, `Cantidad_inventario`) VALUES
-(1, 10),
-(2, 5);
+(1, 9),
+(2, 4);
 
 -- --------------------------------------------------------
 
@@ -137,6 +152,14 @@ CREATE TABLE `metodopago_factura` (
   `MetodoPago_id` int NOT NULL,
   `Monto_total` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `metodopago_factura`
+--
+
+INSERT INTO `metodopago_factura` (`Factura_id`, `MetodoPago_id`, `Monto_total`) VALUES
+(1, 1, 13),
+(2, 2, 26);
 
 -- --------------------------------------------------------
 
@@ -177,7 +200,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`IdProducto`, `Categoria_id`, `Nombre_producto`, `Descripcion`, `Imagen`, `Status`) VALUES
-(1, 2, 'Trululito', 'Gato', 'gato.png', 0),
+(1, 2, 'Trululito', 'Gato', 'gato.png', 1),
 (2, 1, 'chocolate', 'perro', 'perro.png', 1);
 
 -- --------------------------------------------------------
@@ -271,8 +294,6 @@ ALTER TABLE `detalles_compra`
 -- Indices de la tabla `detalles_factura`
 --
 ALTER TABLE `detalles_factura`
-  ADD UNIQUE KEY `Factura_Id` (`Factura_Id`),
-  ADD UNIQUE KEY `Producto_Id` (`Producto_Id`),
   ADD KEY `Factura_Id_2` (`Factura_Id`),
   ADD KEY `Producto_Id_2` (`Producto_Id`);
 
@@ -280,12 +301,7 @@ ALTER TABLE `detalles_factura`
 -- Indices de la tabla `factura`
 --
 ALTER TABLE `factura`
-  ADD PRIMARY KEY (`IdFactura`),
-  ADD UNIQUE KEY `Usuarios_cedula` (`Usuario_cedula`),
-  ADD KEY `Usuarios_cedula_2` (`Usuario_cedula`),
-  ADD KEY `Usuarios_cedula_3` (`Usuario_cedula`),
-  ADD KEY `Usuarios_cedula_4` (`Usuario_cedula`),
-  ADD KEY `Pedido_id` (`Metodo_id`);
+  ADD PRIMARY KEY (`IdFactura`);
 
 --
 -- Indices de la tabla `inventario`
@@ -353,7 +369,7 @@ ALTER TABLE `compra`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `IdFactura` int NOT NULL AUTO_INCREMENT;
+  MODIFY `IdFactura` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `metodo_de_pago`
@@ -394,14 +410,8 @@ ALTER TABLE `detalles_compra`
 -- Filtros para la tabla `detalles_factura`
 --
 ALTER TABLE `detalles_factura`
-  ADD CONSTRAINT `detalles_factura_ibfk_1` FOREIGN KEY (`Factura_Id`) REFERENCES `factura` (`IdFactura`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `detalles_factura_ibfk_2` FOREIGN KEY (`Producto_Id`) REFERENCES `producto` (`IdProducto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`Usuario_cedula`) REFERENCES `usuario` (`Cedula`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `detalles_factura_ibfk_2` FOREIGN KEY (`Producto_Id`) REFERENCES `producto` (`IdProducto`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detalles_factura_ibfk_3` FOREIGN KEY (`Factura_Id`) REFERENCES `factura` (`IdFactura`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `inventario`
@@ -413,8 +423,8 @@ ALTER TABLE `inventario`
 -- Filtros para la tabla `metodopago_factura`
 --
 ALTER TABLE `metodopago_factura`
-  ADD CONSTRAINT `metodopago_factura_ibfk_1` FOREIGN KEY (`Factura_id`) REFERENCES `factura` (`IdFactura`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `metodopago_factura_ibfk_2` FOREIGN KEY (`MetodoPago_id`) REFERENCES `metodo_de_pago` (`idMetodo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `metodopago_factura_ibfk_2` FOREIGN KEY (`MetodoPago_id`) REFERENCES `metodo_de_pago` (`idMetodo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `metodopago_factura_ibfk_3` FOREIGN KEY (`Factura_id`) REFERENCES `factura` (`IdFactura`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`

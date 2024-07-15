@@ -1,0 +1,25 @@
+body{
+    background: rgba(0,0,0,.5);
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,.5);
+}
+img{
+    width: 100px;
+}
+header a{
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+p a{
+    color: rgb(17, 161, 118);
+}

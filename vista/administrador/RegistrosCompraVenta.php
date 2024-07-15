@@ -1,142 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros</title>
+    <link rel="stylesheet" href="../estilos/bootstrap.min.css">
 </head>
+
 <body>
-    
-    <?php 
-   
-session_start();
-    if(!isset($_SESSION['admin']) ){
+
+    <?php
+    session_start();
+    if (!isset($_SESSION['admin'])) {
         header("location:../InicioSesion.php");
     }
     ?>
-  
-    
-        <a href="../vista/administrador/VistaAdmin.php">Volver</a>
-        <a href="../vista/administrador/ReportesVenta.php">Reportes de Venta</a>
-        <a href="../vista/administrador/ReportesCompra.php">Reportes de Compra</a>
 
-        <h1>Productos</h1>
-        <h2>Compra</h2>
-        <?php foreach($compra as $producto): ?>
-    <table>
-        <tr>
-            <td>Producto Id</td>
-            <td>Proveedor</td>
-            <td>Compra Id</td>           
-            <td>Categoria</td>
-            <td>Nombre</td>
-            <td>Descripcion</td>
-            <td>Status</td>
-            <td>Precio</td>
-            <td>Cantidad</td>
-          
-   
-        </tr>
-        <tr>
-            <td>
-                <?php echo $producto['IdProducto'] ?>
-            </td>
-            <td>
-                <?php echo $producto['Proveedor_rif'] ?>
-            </td>
-           
-            <td>
-                <?php echo $producto['Compra_id'] ?>
-            </td>
-            
-            <td>
-                <?php echo $producto['Nombre_categoria'] ?>
-            </td>
-            
-            <td>
-                <?php echo $producto['Nombre_producto'] ?>
-            </td>
 
-            <td >
-                <?php echo $producto['Descripcion'] ?>
-            </td>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <a href="../vista/administrador/VistaAdmin.php" class="btn btn-primary">Volver</a>
+                <a href="../vista/administrador/ReportesVenta.php" class="btn btn-secondary">Reportes de Venta</a>
+                <a href="../vista/administrador/ReportesCompra.php" class="btn btn-secondary">Reportes de Compra</a>
+            </div>
+        </div>
 
-            <td>
-                <?php echo $producto['Status'] ?>
-            </td>
+        <div class="row mt-4">
+            <div class="col">
+                <h1>Productos</h1>
+                <h2>Compra Historial</h2>
 
-            <td>
-                <?php echo $producto['Precio_producto'] ?>
-            </td>
-            
-            <td>
-                <?php echo $producto['Cantidad_compra'] ?>
-            </td>
-        </tr>
-      
-    </table>
-        <?php  endforeach; ?>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Producto Id</th>
+                            <th>Proveedor</th>
+                            <th>Compra Id</th>
+                            <th>Categoría</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Status</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <?php foreach ($compra as $producto_compra) : ?>
+                        <tbody>
+                            <tr>
+                                <td><?php echo $producto_compra['IdProducto'] ?></td>
+                                <td><?php echo $producto_compra['Proveedor_rif'] ?></td>
+                                <td><?php echo $producto_compra['Compra_id'] ?></td>
+                                <td><?php echo $producto_compra['Nombre_categoria'] ?></td>
+                                <td><?php echo $producto_compra['Nombre_producto'] ?></td>
+                                <td><?php echo $producto_compra['Descripcion'] ?></td>
+                                <td><?php echo $producto_compra['Status'] ?></td>
+                                <td><?php echo $producto_compra['Precio_producto'] ?></td>
+                                <td><?php echo $producto_compra['Cantidad_compra'] ?></td>
+                            </tr>
+                        </tbody>
+                    <?php endforeach; ?>
+                </table>
 
-        <h2>Venta</h2>
+            </div>
+        </div>
 
-        <?php foreach($venta as $producto): ?>
-           
-    <table>
-        <tr>
-            <td>Producto Id</td>
-            <td>Cliente</td>
-            <td>Factura Id</td>           
-            <td>Nombre</td>
-            <td>Cantidad vendida</td>
-            <td>Precio unitario</td>
-            <td>Fecha</td>
-            <td>Monto Total</td>
-            <td>Metodo</td>
-          
-   
-        </tr>
-        <tr>
-            <td>
-                <?php echo $producto['IdProducto'] ?>
-            </td>
-            <td>
-                <?php echo $producto['Usuario_cedula'] ?>
-            </td>
-           
-            <td>
-                <?php echo $producto['IdFactura'] ?>
-            </td>
-            
-            
-            <td>
-                <?php echo $producto['Nombre_producto'] ?>
-            </td>
+        <div class="row mt-4">
+            <div class="col">
+                <h2>Venta Historial</h2>
 
-            <td >
-                <?php echo $producto['Cantidad_producto'] ?>
-            </td>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Producto Id</th>
+                            <th>Cliente</th>
+                            <th>Factura Id</th>
+                            <th>Nombre</th>
+                            <th>Cantidad vendida</th>
+                            <th>Precio unitario</th>
+                            <th>Fecha</th>
+                            <th>Monto Total</th>
+                            <th>Método</th>
+                        </tr>
+                    </thead>
+                    <?php foreach ($venta as $producto_venta) : ?>
+                        <tbody>
+                            <tr>
+                                <td><?php echo $producto_venta['IdProducto'] ?></td>
+                                <td><?php echo $producto_venta['Usuario_cedula'] ?></td>
+                                <td><?php echo $producto_venta['IdFactura'] ?></td>
+                                <td><?php echo $producto_venta['Nombre_producto'] ?></td>
+                                <td><?php echo $producto_venta['Cantidad_producto'] ?></td>
+                                <td><?php echo $producto_venta['Precio_unitario'] ?></td>
+                                <td><?php echo $producto_venta['Fecha'] ?></td>
 
-            <td>
-                <?php echo $producto['Precio_unitario'] ?>
-            </td>
+                                <td>
 
-            <td>
-                <?php echo $producto['Fecha'] ?>
-            </td>
-            <?php foreach($metodo as $producto): ?>
-            <td>
-                <?php echo $producto['Monto_total'] ?>
-            </td>
-            
-            <td>
-                <?php echo $producto['Metodo'] ?>
-            </td>
+                                    <?php
+                                    // Buscar el método de pago correspondiente
+                                    foreach ($metodo as $m) {
+                                        if ($m['MetodoPago_id'] == $producto_venta['IdFactura']) {
+                                            echo $m['Monto_total'];
+                                            break;
+                                        }
+                                    }
+                                    ?>
 
-            <?php  endforeach; ?>
-        </tr>
-      
-    </table>
-        <?php  endforeach; ?>
+                                </td>
+                                <td>
+                                <?php
+                                    // Buscar el método de pago correspondiente
+                                    foreach ($metodo as $m) {
+                                        if ($m['MetodoPago_id'] == $producto_venta['IdFactura']) {
+                                            echo $m['Metodo'];
+                                            break;
+                                        }
+                                    }
+                                    ?>
+                                </td>
 
+
+                            </tr>
+                        </tbody>
+                    <?php endforeach; ?>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../estilos/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

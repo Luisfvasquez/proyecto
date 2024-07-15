@@ -19,7 +19,7 @@ class pdf extends FPDF
     { 
         $this->SetFont("courier", "B", 12);
         $this->SetY(-15);
-        $this->Write(5, "Fe y alegria");
+        $this->Write(5, "Huauu");
     }
 }
 
@@ -28,7 +28,7 @@ $fpdf = new pdf();
 $fpdf->AddPage("portrait", "letter");
 $fpdf->SetMargins(10,30,20,20);
 $fpdf->SetFont("Arial", "B", 12); //Controla la letra el tipo y el tamaño de fuente}
-$fpdf->Cell(0, 5, "IUJO", 0, 0, "C");
+$fpdf->Cell(0, 5, "Huauu", 0, 0, "C");
 $fpdf->Ln();
 
 $fpdf->SetFontSize(20);

@@ -2,6 +2,7 @@
 
 
 class ActualizarAdmin{
+    //Atributos
     private $db;
     private $cedula;
     private $nombre;
@@ -18,8 +19,9 @@ class ActualizarAdmin{
 
     public function __construct()
     {
-        require_once("Conexion.php");
-        $this->db=Conexion::conexion();
+        require_once("Conexion.php");//Llama al archivo conexion
+        $this->db=Conexion::conexion();//Establece la variable de conexion con la BD
+        //Almacena todos los datos recibidos en su respectiva variable
         $this->cedula=$_POST['Cedula'];
         $this->nombre=$_POST['Nombre'];
         $this->correo=$_POST['Correo'];
@@ -33,12 +35,12 @@ class ActualizarAdmin{
     }
 
 
-    public function ActualizarAdmin(){
+    public function ActualizarAdmin(){//Metodo que se encarga de actualizar los datos
         
-
+        //Instruccion a ejecutar en la BD
         $instruccion = "UPDATE usuario SET Nombre_usuario=:nombre,Telefono=:telefono,Correo=:correo,imagen=:imgen WHERE Cedula=$this->cedula";
 
-        $resultado =$this->db->prepare($instruccion);
+        $resultado =$this->db->prepare($instruccion);//prepara la instruccion
 
         if(($this->tipo=="image/jpeg")||($this->tipo=="image/png")||($this->tipo=="image/jpg")||($this->tipo=="image/gif")){
             //ruta de la carpeta destino en servidor
@@ -56,11 +58,11 @@ class ActualizarAdmin{
                 echo "El tipo de archivo no es el correcto". $this->tipo ;  
             }
               
-       
+            //Ejecuta el resultado de la instruccion
         $resultado->execute(array(":nombre" => $this->nombre, ":telefono" => $this->telefono,":correo" => $this->correo,":imgen"=>$this->imagen));
 
        
-
+            //Redirecciona a la vista de gestion de administrador
         header("location:../controlador/GestionAdmin.php");
        
         

@@ -19,7 +19,7 @@ class pdf extends FPDF
     { 
         $this->SetFont("courier", "B", 12);
         $this->SetY(-15);
-        $this->Write(5, "Fe y alegria");
+        $this->Write(5, "Huauu");
     }
 }
 
@@ -28,7 +28,7 @@ $fpdf = new pdf();
 $fpdf->AddPage("portrait", "letter");
 $fpdf->SetMargins(10,30,20,20);
 $fpdf->SetFont("Arial", "B", 12); //Controla la letra el tipo y el tamaño de fuente}
-$fpdf->Cell(0, 5, "IUJO", 0, 0, "C");
+$fpdf->Cell(0, 5, "Huauu", 0, 0, "C");
 $fpdf->Ln();
 
 $fpdf->SetFontSize(20);
@@ -41,56 +41,148 @@ $fpdf->SetDrawColor(25,155,132);
 
 $fpdf->SetFontSize(14);
 
-/* $fpdf->ln();
-$fpdf->Cell(30, 10, "Cliente", 1, 0, "C");
-$fpdf->ln();
-$fpdf->Cell(30, 10, "Factura", 1, 0, "C");
-$fpdf->ln();
-$fpdf->Cell(30, 10, "Nombre", 1, 0, "C");
-$fpdf->ln();
-$fpdf->Cell(30, 10, "C.Venta", 1, 0, "C");
-$fpdf->ln();
-$fpdf->Cell(30, 10, "Precio U.", 1, 0, "C");
-$fpdf->ln();
-$fpdf->Cell(30, 10, "Fecha", 1, 0, "C");
-$fpdf->ln();
-$fpdf->Cell(30, 10, "Monto T.", 1, 0, "C");
-$fpdf->ln();
-$fpdf->Cell(30, 10, "Metodo", 1, 0, "C");
- */
-//$fpdf->Line(20, 60, 200, 60);
 
-/* $fpdf->Ln(20) */;
 
-$fpdf->SetFillColor(240,240,240);
-$fpdf->SetTextColor(40,40,40);
-$fpdf->SetDrawColor(255,255,255);
 
 $datos = $productos->MostrarProductosVenta();
 $metodo = $productos->Metodo();
 foreach ($datos as $personas) {
-    $fpdf->SetDrawColor(25,155,132);
+   
     $fpdf->SetX(10);
     $fpdf->SetTextColor(24,178,159);
     $fpdf->SetDrawColor(25,155,132);
+
     $fpdf->Cell(30, 10, "Id", 1, 0, "C");
     $fpdf->SetX(40);
-    $fpdf->Cell(10, 10, " " . $personas['IdProducto']  ." ", 1, 0, "C",1);
+
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+    $fpdf->Cell(50, 10, " " . $personas['IdProducto']  ." ", 1, 0, "C",1);
     $fpdf->Ln();
+   
     $fpdf->SetX(10);
-    $fpdf->Cell(30, 10, "Cliente", 1, 0, "C");
-  
-    $fpdf->Cell(35, 10, " " . $personas['Usuario_cedula']  ." ", 1, 0, "L",1);
-    $fpdf->Cell(28, 10, " " . $personas['IdFactura']  ." ", 1, 0, "C",1);
-    $fpdf->Cell(30, 10, " " . $personas['Nombre_producto']  ." ", 1, 0, "L",1); 
-    $fpdf->Cell(35, 10, " " . $personas['Cantidad_producto']  ." ", 1, 0, "L",1); 
-    $fpdf->Cell(25, 10, " " . $personas['Precio_unitario']  ." ", 1, 0, "C",1); 
-    $fpdf->Cell(28, 10, " " . $personas['Fecha']  ." ", 1, 0, "L",1); 
-     foreach($metodo as $producto):
-    $fpdf->Cell(28, 10, " " . $producto['Monto_total']  ." ", 1, 0, "L",1); 
-    $fpdf->Cell(28, 10, " " . $producto['Metodo']  ." ", 1, 0, "L",1); 
-endforeach; 
-    $fpdf->Ln(); 
+    $fpdf->SetTextColor(24,178,159);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(30, 10, "Usuario", 1, 0, "C");
+    $fpdf->SetX(40);
+
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(50, 10, " " . $personas['Usuario_cedula']  ." ", 1, 0, "C",1);
+    $fpdf->Ln();
+
+    $fpdf->SetX(10);
+    $fpdf->SetTextColor(24,178,159);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(30, 10, "Factura", 1, 0, "C");
+    $fpdf->SetX(40);
+    
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(50, 10, " " . $personas['IdFactura']  ." ", 1, 0, "C",1);
+    $fpdf->Ln();
+
+    $fpdf->SetX(10);
+    $fpdf->SetTextColor(24,178,159);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(30, 10, "Producto", 1, 0, "C");
+    $fpdf->SetX(40);
+
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(50, 10, " " . $personas['Nombre_producto']  ." ", 1, 0, "C",1);
+    $fpdf->Ln();
+
+   $fpdf->SetX(10);
+    $fpdf->SetTextColor(24,178,159);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(30, 10, "Cantidad", 1, 0, "C");
+    $fpdf->SetX(40);
+
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(50, 10, " " . $personas['Cantidad_producto']  ." ", 1, 0, "C",1);
+    $fpdf->Ln();
+
+    $fpdf->SetX(10);
+    $fpdf->SetTextColor(24,178,159);
+    $fpdf->SetDrawColor(25,155,132);
+    $fpdf->Cell(30, 10, "Precio", 1, 0, "C");
+    $fpdf->SetX(40);
+
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(50, 10, " " . $personas['Precio_unitario']  ." ", 1, 0, "C",1);
+    $fpdf->Ln();
+
+    $fpdf->SetX(10);
+    $fpdf->SetTextColor(24,178,159);
+    $fpdf->SetDrawColor(25,155,132);
+    $fpdf->Cell(30, 10, "Fecha", 1, 0, "C");
+    $fpdf->SetX(40);
+    
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(50, 10, " " . $personas['Fecha']  ." ", 1, 0, "C",1);
+    $fpdf->Ln();
+
+   
+    $fpdf->SetX(10);
+    $fpdf->SetTextColor(24,178,159);
+    $fpdf->SetDrawColor(25,155,132);
+    $fpdf->Cell(30, 10, "Monto total", 1, 0, "C");
+    $fpdf->SetX(40);
+    foreach($metodo as $producto){
+        
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+    $fpdf->Cell(50, 10, " " . $producto['Monto_total']  ." ", 1, 0, "C",1);
+    }
+    $fpdf->Ln();
+
+
+    $fpdf->SetX(10);
+    $fpdf->SetTextColor(24,178,159);
+    $fpdf->SetDrawColor(25,155,132);
+    $fpdf->Cell(30, 10, "Metodo", 1, 0, "C");
+    $fpdf->SetX(40);
+    foreach($metodo as $producto){
+        
+    $fpdf->SetFillColor(240,240,240);
+    $fpdf->SetTextColor(40,40,40);
+    $fpdf->SetDrawColor(255,255,255);
+    $fpdf->SetDrawColor(25,155,132);
+
+    $fpdf->Cell(50, 10, " " . $producto['Metodo']  ." ", 1, 0, "C",1);
+    }
+    $fpdf->Ln();
+    $fpdf->Ln();
 }
 
 

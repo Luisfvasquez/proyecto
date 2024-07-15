@@ -2,6 +2,7 @@
 
 
 class ActualizarUsuario{
+    //atributos
     private $db;
     private $cedula;
     private $nombre;
@@ -18,8 +19,9 @@ class ActualizarUsuario{
 
     public function __construct()
     {
-        require_once("Conexion.php");
-        $this->db=Conexion::conexion();
+        require_once("Conexion.php");//Llama al archivo conexion
+        $this->db=Conexion::conexion();//Establece la variable de conexion con la BD
+        //Almacena todos los datos recibidos en su respectiva variable
         $this->cedula=$_POST['Cedula'];
         $this->nombre=$_POST['Nombre'];
         $this->correo=$_POST['Correo'];
@@ -33,12 +35,12 @@ class ActualizarUsuario{
     }
 
 
-    public function ActualizarUsuario(){
+    public function ActualizarUsuario(){//Metodo que se encarga de actualizar los datos
         
-
+        //Instruccion a ejecutar en la BD
         $instruccion = "UPDATE usuario SET Nombre_usuario=:nombre,Telefono=:telefono,Correo=:correo,imagen=:foto WHERE Cedula=$this->cedula";
 
-        $resultado =$this->db->prepare($instruccion);
+        $resultado =$this->db->prepare($instruccion);//prepara la instruccion
 
         if(($this->tipo=="image/jpeg")||($this->tipo=="image/png")||($this->tipo=="image/jpg")||($this->tipo=="image/gif")){
             //ruta de la carpeta destino en servidor
@@ -56,13 +58,16 @@ class ActualizarUsuario{
                 echo "El tipo de archivo no es el correcto". $this->tipo ;  
             }
               
-       
+       //Ejecuta la instruccion
         $resultado->execute(array(":nombre" => $this->nombre, ":telefono" => $this->telefono,":correo" => $this->correo,":foto"=>$this->imagen));
 
+        //Inicia la variable sesion para verificar si es un administrador o un usuario
         session_start();
        if(isset($_SESSION['admin'])){
+        //si es un administrador lo redirecciona a la gestion de usuarios
         header("location:../controlador/GestionUsuarios.php");
        }else{
+        //si es un usuario lo redirecciona a su perfil
         header("location:../vista/usuario/Perfil.php");
         
        }
