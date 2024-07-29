@@ -70,6 +70,7 @@ class ActualizarUsuario{
         //si es un usuario lo redirecciona a su perfil
         header("location:../vista/usuario/Perfil.php");
         
+        echo "<script>alert('usuario registrado');</script>";
        }
         
        
