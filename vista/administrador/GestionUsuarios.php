@@ -43,7 +43,7 @@
                     <td><?php echo $administrador["Correo"]; ?></td>
                     <td><?php echo $administrador["Telefono"]; ?></td>
                     <td><?php echo $administrador["Rol"]; ?></td>
-                    <td><img src="/intranet/uploads/<?php echo $administrador["imagen"]; ?>" alt="Foto de perfil" style="max-width: 200px;"></td>
+                    <td><img src="/proyecto-v1/imgs/<?php echo $administrador["imagen"]; ?>" alt="Foto de perfil" style="max-width: 200px;"></td>
                     <td>
                       <a href="../controlador/ConsultaActualizarUsuario.php?cedula=<?php echo $administrador['Cedula']; ?>" class="btn btn-primary btn-sm">Actualizar</a>
                       <a href="../controlador/BorrarUsuarios.php?cedula=<?php echo $administrador['Cedula']; ?>" class="btn btn-danger btn-sm">Borrar</a>

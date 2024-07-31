@@ -54,7 +54,7 @@
                         <label for="imagen">Foto</label><br>
                         <input type="file" class="form-control-file" id="imagen" name="imagen">
                         <br>
-                        <img src="/intranet/uploads/<?php echo $datos['imagen'] ?>" alt="Imagen del usuario" width="200px">
+                        <img src="/proyecto-v1/imgs/<?php echo $datos['imagen'] ?>" alt="Imagen del usuario" width="200px">
                     </div>
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                 </form>

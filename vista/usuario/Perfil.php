@@ -28,7 +28,7 @@
                         <a href="EditarPerfil.php" class="btn btn-primary">Editar Perfil</a>
                         <a href="../../controlador/HistorialCompraUsuario.php" class="btn btn-warning">Historial Compra</a>
                         <div class="mt-4">
-                            <img src="/intranet/uploads/<?php echo $_SESSION['imagen']; ?>" alt="" width="100px" class="img-thumbnail mb-3">
+                            <img src="/proyecto-v1/imgs/<?php echo $_SESSION['imagen']; ?>" alt="" width="100px" class="img-thumbnail mb-3">
                             <p><strong>Nombre:</strong> <?php echo $_SESSION['nombre']; ?></p>
                             <p><strong>Teléfono:</strong> <?php echo $_SESSION['telefono']; ?></p>
                             <p><strong>Correo:</strong> <?php echo $_SESSION['correo']; ?></p>

@@ -55,7 +55,7 @@
                     <td><?php echo $administradores["Correo"]; ?></td>
                     <td><?php echo $administradores["Telefono"]; ?></td>
                     <td><?php echo $administradores["Rol"]; ?></td>
-                    <td><img src="/intranet/uploads/<?php echo $administradores["imagen"] ?>" alt="" class="avatar"></td>
+                    <td><img src="/proyecto-v1/imgs/<?php echo $administradores["imagen"] ?>" alt="" class="avatar"></td>
                     <td>
                       <a href="../controlador/ConsultaActualizarAdmin.php?cedula=<?php echo $administradores['Cedula'] ?>" class="btn btn-warning btn-sm">Actualizar</a>
                       <a href="../controlador/BorrarAdmin.php?cedula=<?php echo $administradores['Cedula'] ?>" class="btn btn-danger btn-sm">Borrar</a>

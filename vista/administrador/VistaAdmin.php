@@ -25,7 +25,7 @@
     ?>
     
     <h1>Bienvenido <?php echo $_SESSION['nombre'] ?></h1>
-    <h2><a href="../../controlador/VistaCompra.php">Registro Productos</a></h2>
+    <h2><a href="../../controlador/VistaCompra.php">Compra Productos</a></h2>
     <h2><a href="../../controlador/GestionAdmin.php">Gestion admin</a></h2>
     <h2><a href="../../controlador/GestionUsuarios.php">Gestion usuario</a></h2>
     <h2><a href="../../controlador/GestionCategorias.php">Gestion Categorias</a></h2>

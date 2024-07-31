@@ -17,10 +17,13 @@ class NuevaCompra
 
     public function InventarioStock()
     {
-        $instruccion = ("SELECT * FROM inventario
-    INNER JOIN Producto ON inventario.Producto_id= producto.IdProducto
-      INNER JOIN categoria ON producto.Categoria_id=categoria.idCategoria
-      where Producto_id=:id");
+        $instruccion = ("SELECT * FROM Detalles_compra 
+        INNER JOIN Compra ON detalles_compra.Compra_id= Compra.IdCompra
+        INNER JOIN Proveedor ON Compra.Proveedor_rif= Proveedor.Rif
+        INNER JOIN Producto ON detalles_compra.Producto_id= producto.IdProducto
+        INNER JOIN Categoria ON Producto.Categoria_id= Categoria.idCategoria
+        WHERE Producto_id=:id" );
+
 
         $resultado = $this->db->prepare($instruccion);
         $resultado->execute(array('id'=>$this->id));//Ejecuta la instruccion
@@ -34,4 +37,5 @@ class NuevaCompra
 
 
     }
+   
 }

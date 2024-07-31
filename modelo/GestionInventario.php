@@ -46,6 +46,7 @@
             //Llama los detales de compra y por inner join obtiene todos los datos
           $instruccion = ("SELECT * FROM Detalles_compra 
             INNER JOIN Compra ON detalles_compra.Compra_id= Compra.IdCompra
+            INNER JOIN Proveedor ON Compra.Proveedor_rif= Proveedor.Rif
             INNER JOIN Producto ON detalles_compra.Producto_id= producto.IdProducto
             INNER JOIN Categoria ON Producto.Categoria_id= Categoria.idCategoria" );
 

@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="imagen">Imagen</label><br>
-                                <img src="/intranet/uploads/<?php echo $_SESSION['imagen']; ?>" alt="" width="100px" class="img-thumbnail mb-3">
+                                <img src="/proyecto-v1/imgs/<?php echo $_SESSION['imagen']; ?>" alt="" width="100px" class="img-thumbnail mb-3">
                                 <input type="file" class="form-control-file" name="imagen" id="imagen">
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Actualizar</button>

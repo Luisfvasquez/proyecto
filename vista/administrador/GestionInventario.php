@@ -48,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($matriz as $producto) : ?>
+                    <?php if($matriz!=null){foreach ($matriz as $producto) : ?>
                             <tr>
                                 <td><?php echo $producto['IdProducto'] ?></td>
                                 <td><?php echo $producto['Nombre_producto'] ?></td>
@@ -56,10 +56,10 @@
                                 <td><?php echo $producto['Nombre_categoria'] ?></td>
                                 <td><?php echo $producto['Status'] ?></td>
                                 <td><?php echo $producto['Cantidad_inventario'] ?></td>
-                                <td><img src="/intranet/uploads/<?php echo $producto['Imagen'] ?>" alt="Imagen del producto" width="100px"></td>
+                                <td><img src="/proyecto-v1/imgs/<?php echo $producto['Imagen'] ?>" alt="Imagen del producto" width="100px"></td>
                                 <td><a href="../controlador/ConsultaActualizarProducto.php?id=<?php echo $producto['IdProducto'] ?>" class="btn btn-sm btn-info">Editar</a></td>
                             </tr>
-                        <?php endforeach; ?>
+                            <?php endforeach;}; ?>
                     </tbody>
                 </table>
             </div>

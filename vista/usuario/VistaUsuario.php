@@ -73,7 +73,7 @@
     <div class="cartas">
         <?php foreach ($matriz as $producto) : ?>
             <div class="card" style="width: 18rem;">
-                <img src="/intranet/uploads/<?php echo $producto['Imagen'] ?>" class="card-img-top" alt="img producto" width="100px">
+                <img src="/proyecto-v1/imgs/<?php echo $producto['Imagen'] ?>" class="card-img-top" alt="img producto" width="100px">
 
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $producto['Nombre_producto'] ?></h5>

@@ -56,8 +56,9 @@
                     <div class="form-group">
                         <label for="imagen">Imagen</label><br>
                         <input type="file" class="form-control-file" id="imagen" name="imagen">
+                        <input type="hidden" name="imagenAnterior" value="<?php echo $producto['Imagen'] ?>">
                         <br>
-                        <img src="/intranet/uploads/<?php echo $producto['Imagen'] ?>" alt="Imagen del producto" width="200px">
+                        <img src="/proyecto-v1/imgs/<?php echo $producto['Imagen'] ?>" alt="Imagen del producto" width="200px">
                     </div>
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                 </form>

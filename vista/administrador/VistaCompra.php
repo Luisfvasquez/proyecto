@@ -27,6 +27,7 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Descripción</th>
                                         <th>Categoría</th>
@@ -35,15 +36,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($productos as $producto) : ?>
+                                    <?php if($productos!=null){foreach ($productos as $producto) : ?>
+                                        
                                         <tr>
+                                            <td><?php echo $producto['Producto_id'] ?></td>
                                             <td><?php echo $producto['Nombre_producto'] ?></td>
                                             <td><?php echo $producto['Descripcion'] ?></td>
                                             <td><?php echo $producto['Nombre_categoria'] ?></td>
                                             <td><?php echo $producto['Cantidad_inventario'] ?></td>
                                             <td><a class="btn btn-secondary" href="../controlador/NuevaCompra.php?id=<?php echo $producto['Producto_id'] ?>">Nueva compra</a></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endforeach;}; ?>
                                 </tbody>
                             </table>
                         </div>
