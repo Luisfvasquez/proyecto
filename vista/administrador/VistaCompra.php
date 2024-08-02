@@ -80,15 +80,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="nombre_producto">Nombre del producto de compra</label>
-                                <input type="text" class="form-control" name="nombre_producto" id="nombre_producto" placeholder="Nombre del producto">
+                                <input required type="text" class="form-control" name="nombre_producto" id="nombre_producto" placeholder="Nombre del producto">
                             </div>
                             <div class="form-group">
                                 <label for="descripcion">Descripción de producto</label>
-                                <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripción">
+                                <input required type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripción">
                             </div>
                             <div class="form-group">
                                 <label for="categoria_id">Categoría del producto</label>
-                                <select class="form-control" name="categoria_id" id="categoria_id">
+                                <select required class="form-control" name="categoria_id" id="categoria_id">
                                     <option selected disabled>Seleccionar categoría</option>
                                     <?php foreach ($matriz as $categorias) : ?>
                                         <option value="<?php echo $categorias["idCategoria"] ?>"><?php echo $categorias["Nombre_categoria"] ?></option>
@@ -101,15 +101,15 @@
                             </div>
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" name="status" id="status" value="1">
-                                <label class="form-check-label" for="status">Mostrar en Stock</label>
+                                <label class="form-check-label" for="status">Mostrar al usuario</label>
                             </div>
                             <div class="form-group">
                                 <label for="precio">Precio de compra</label>
-                                <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
+                                <input required type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
                             </div>
                             <div class="form-group">
                                 <label for="cantidad">Cantidad de compra</label>
-                                <input type="text" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad">
+                                <input required type="text" class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad">
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Registrar Compra</button>
                         </form>

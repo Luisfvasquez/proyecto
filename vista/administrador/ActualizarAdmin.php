@@ -54,6 +54,8 @@
                     </div>
                     <div class="form-group">
                         <label for="imagen">Foto</label>
+                        <input type="hidden" name="imagenAnterior" value="<?php echo $datos['imagen'] ?>">
+                      
                         <input type="file" class="form-control-file" id="imagen" name="imagen">
                         <br>
                         <img src="/proyecto-v1/imgs/<?php echo $datos['imagen'] ?>" alt="Imagen del administrador" width="200px">

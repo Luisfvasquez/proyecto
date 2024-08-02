@@ -41,12 +41,11 @@ $fpdf->SetDrawColor(25,155,132);
 
 $fpdf->SetFontSize(14);
 $fpdf->Cell(10, 10, "Id", 1, 0, "C");
-$fpdf->Cell(35, 10, "Nombre", 1, 0, "C");
+$fpdf->Cell(35, 10, "Categoria", 1, 0, "C");
+$fpdf->Cell(45, 10, "Nombre", 1, 0, "C");
 $fpdf->Cell(28, 10, "Cantidad", 1, 0, "C");
 $fpdf->Cell(30, 10, "Precio", 1, 0, "C");
-$fpdf->Cell(35, 10, "Categoria id", 1, 0, "C");
-$fpdf->Cell(30, 10, "Descripcion", 1, 0, "C");
-$fpdf->Cell(25, 10, "Factura id", 1, 0, "C");
+$fpdf->Cell(42, 10, "Descripcion", 1, 0, "C");
 
 
 $fpdf->Line(20, 60, 200, 60);
@@ -61,13 +60,12 @@ $datos = $productos->HistorialCompra();
 foreach ($datos as $personas) {
     $fpdf->SetDrawColor(25,155,132);
     $fpdf->SetX(10);
-    $fpdf->Cell(10, 10, " " . $personas['IdProducto']  ." ", 1, 0, "C",1);
-    $fpdf->Cell(35, 10, " " . $personas['Nombre_producto']  ." ", 1, 0, "L",1);
-    $fpdf->Cell(28, 10, " " . $personas['Cantidad_producto']  ." ", 1, 0, "C",1);
-    $fpdf->Cell(30, 10, " " . $personas['Precio_unitario']  ." ", 1, 0, "L",1); 
-    $fpdf->Cell(35, 10, " " . $personas['Categoria_id']  ." ", 1, 0, "L",1); 
-    $fpdf->Cell(30, 10, " " . $personas['Descripcion']  ." ", 1, 0, "C",1); 
-    $fpdf->Cell(25, 10, " " . $personas['IdFactura']  ." ", 1, 0, "L",1); 
+    $fpdf->Cell(10, 10, " " . $personas['IdFactura']  ." ", 1, 0, "L",1);   
+    $fpdf->Cell(35, 10, " " . $personas['Nombre_categoria']  ." ", 1, 0, "L",1); 
+    $fpdf->Cell(45, 10, " " . $personas['Nombre_producto']  ." ", 1, 0, "L",1);
+    $fpdf->Cell(28, 10, " " . $personas['Cantidad_producto'].''  ." ", 1, 0, "C",1);
+    $fpdf->Cell(30, 10, " " . $personas['Precio_unitario'].'$'  ." ", 1, 0, "C",1); 
+    $fpdf->Cell(42, 10, " " . $personas['Descripcion']  ." ", 1, 0, "L",1); 
     $fpdf->Ln(); 
 }
 

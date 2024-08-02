@@ -156,14 +156,20 @@ foreach ($datos as $personas) {
     $fpdf->SetDrawColor(25,155,132);
     $fpdf->Cell(30, 10, "Monto total", 1, 0, "C");
     $fpdf->SetX(40);
-    foreach($metodo as $producto){
+    foreach($metodo as $producto){// Buscar el método de pago correspondiente
         
     $fpdf->SetFillColor(240,240,240);
     $fpdf->SetTextColor(40,40,40);
     $fpdf->SetDrawColor(255,255,255);
     $fpdf->SetDrawColor(25,155,132);
+    
+    //Compara si el id de la factura del metodo es igual al id de la factura de la venta
+   if ($producto['Factura_id'] == $personas['IdFactura']) {
     $fpdf->Cell(50, 10, " " . $producto['Monto_total']  ." ", 1, 0, "C",1);
+        break; // Salir del bucle una vez encontrado el método
     }
+    }
+
     $fpdf->Ln();
 
 
@@ -179,7 +185,11 @@ foreach ($datos as $personas) {
     $fpdf->SetDrawColor(255,255,255);
     $fpdf->SetDrawColor(25,155,132);
 
+     //Compara si el id de la factura del metodo es igual al id de la factura de la venta
+   if ($producto['Factura_id'] == $personas['IdFactura']) {
     $fpdf->Cell(50, 10, " " . $producto['Metodo']  ." ", 1, 0, "C",1);
+        break; // Salir del bucle una vez encontrado el método
+    }
     }
     $fpdf->Ln();
     $fpdf->Ln();

@@ -100,9 +100,9 @@
                                     <?php
                                     // Buscar el método de pago correspondiente
                                     foreach ($metodo as $m) {
-                                        if ($m['MetodoPago_id'] == $producto_venta['IdFactura']) {
-                                            echo $m['Monto_total'];
-                                            break;
+                                        if ($m['Factura_id'] == $producto_venta['IdFactura']) {
+                                            echo $m['Metodo'];
+                                            break; // Salir del bucle una vez encontrado el método
                                         }
                                     }
                                     ?>
@@ -112,9 +112,10 @@
                                 <?php
                                     // Buscar el método de pago correspondiente
                                     foreach ($metodo as $m) {
-                                        if ($m['MetodoPago_id'] == $producto_venta['IdFactura']) {
-                                            echo $m['Metodo'];
-                                            break;
+                                  //compara si el id de la factura del metodo es igual al id de la factura de la venta
+                                        if ($m['Factura_id'] == $producto_venta['IdFactura']) {
+                                            echo $m['Monto_total'];
+                                            break; // Salir del bucle una vez encontrado el método
                                         }
                                     }
                                     ?>

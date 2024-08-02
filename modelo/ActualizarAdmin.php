@@ -29,6 +29,11 @@ class ActualizarAdmin{
         $this->imagen = $_FILES["imagen"]["name"]; 
        
         //Recibir datos de imagen
+        
+        if(empty($_FILES['imagen']['name'])){
+            $this->imagen = $_POST['imagenAnterior'];
+        }
+           
                 $this->nombreig = $_FILES["imagen"]["name"];
                 $this->tipo = $_FILES["imagen"]["type"];
                 $this->tamanio = $_FILES["imagen"]["size"];

@@ -20,8 +20,9 @@
             //Llama los detales de venta y por inner join obtiene todos los datos
             $instruccion = ("SELECT * FROM Detalles_factura 
             INNER JOIN Factura ON detalles_factura.Factura_id= factura.IdFactura
-            INNER JOIN Producto ON detalles_factura.Producto_id= producto.IdProducto 
-            where Factura.Usuario_cedula=$this->usuario" );
+            INNER JOIN Producto ON detalles_factura.Producto_id= producto.IdProducto
+            INNER JOIN Categoria ON producto.Categoria_id= categoria.IdCategoria 
+            WHERE Factura.Usuario_cedula=$this->usuario" );
 
             $resultado = $this->db->prepare($instruccion);//prepara la instruccion
             $resultado->execute(array());//Ejecuta la instruccion

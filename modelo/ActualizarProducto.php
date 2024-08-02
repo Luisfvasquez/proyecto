@@ -10,6 +10,7 @@
         private $imagen;
        private $id;
 
+
         private $nombreig;
         private $tipo;
         private $carpeta;
@@ -33,7 +34,9 @@
                 $this->statuss = 0;
             }
 
-          
+        if(empty($_FILES['imagen']['name'])){
+            $this->imagen = $_POST['imagenAnterior'];
+        }
                
             //Recibir datos de imagen
                 $this->nombreig = $_FILES["imagen"]["name"];

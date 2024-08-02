@@ -56,7 +56,7 @@
                 <tbody>
 
                   <tr>
-                    <td><input type="text" name="nombre" id="nombre"></td>
+                    <td><input required type="text" name="nombre" id="nombre"></td>
                     <td>
                       <input type="submit" value="Agregar" class="btn btn-secondary btn-sm">
                     </td>

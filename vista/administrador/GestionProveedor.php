@@ -60,10 +60,10 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><input type="text" name="rif" id="rif"></td>
-                    <td><input type="text" name="nombre" id="nombre"></td>
-                    <td><input type="email" name="correo" id="correo"></td>
-                    <td><input type="text" name="direccion" id="direccion"></td>
+                    <td><input required type="text" name="rif" id="rif"></td>
+                    <td><input required type="text" name="nombre" id="nombre"></td>
+                    <td><input required type="email" name="correo" id="correo"></td>
+                    <td><input required type="text" name="direccion" id="direccion"></td>
                     <td>
                       <input type="submit" value="Agregar" class="btn btn-secondary btn-sm">
                     </td>

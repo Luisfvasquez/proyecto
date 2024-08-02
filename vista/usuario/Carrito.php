@@ -59,7 +59,7 @@ if (isset($_POST['btnAccion'])) {
                 foreach ($_SESSION['carrito'] as $indice => $productos) {
                     if ($productos['idproducto'] == $id) { //Verifica si el id del producto es igual al id del producto en session
                         unset($_SESSION['carrito'][$indice]); //para eliminarlo de la sesion
-                        echo "<script>alert('Elemento eliminado')</script>";
+                       
                     }
                 }
             } else {

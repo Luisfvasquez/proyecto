@@ -28,6 +28,11 @@ class ActualizarUsuario{
         $this->telefono=$_POST['Telefono'];
         $this->imagen = $_FILES["imagen"]["name"]; 
        
+        
+        if(empty($_FILES['imagen']['name'])){
+            $this->imagen = $_POST['imagenAnterior'];
+        }
+           
         //Recibir datos de imagen
                 $this->nombreig = $_FILES["imagen"]["name"];
                 $this->tipo = $_FILES["imagen"]["type"];
