@@ -7,6 +7,10 @@ if (isset($_POST['btnAccion'])) {
     switch ($_POST['btnAccion']) {
         case 'Agregar al carrito':
             //Verifica un envio correcto de los datos
+            if(!is_numeric($_POST['cantidad'])){
+                $mensaje = "No es una cantidad valida";
+                break;
+            }
             if (is_numeric($_POST['idproducto'])) {
                 $mensaje = "Producto agregado al carrito " . $_POST['idproducto'];
             } else {

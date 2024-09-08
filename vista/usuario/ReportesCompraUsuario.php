@@ -3,6 +3,16 @@ require("../../fpdf/fpdf.php");
 require_once("../../modelo/HistorialCompraUsuario.php");
 $productos = new Historial();
 
+
+$instruccion=$_GET['instruccion'];
+
+$resultado=Conexion::conexion()->prepare($instruccion);
+
+$resultado->execute(array());
+while($fila=$resultado->fetch(PDO::FETCH_ASSOC)){
+    $datos[]=$fila;
+}
+
 class pdf extends FPDF
 {
     public function Header()
@@ -35,17 +45,17 @@ $fpdf->SetFontSize(20);
 $fpdf->Cell(0, 20, "Reportes Compra", 0, 0, "C");
 $fpdf->Ln(30); //salto de linea
 
-$fpdf->SetX(10);
+$fpdf->SetX(9);
 $fpdf->SetTextColor(24,178,159);
 $fpdf->SetDrawColor(25,155,132);
 
 $fpdf->SetFontSize(14);
-$fpdf->Cell(10, 10, "Id", 1, 0, "C");
+$fpdf->Cell(12, 10, "Id F", 1, 0, "C");
 $fpdf->Cell(35, 10, "Categoria", 1, 0, "C");
-$fpdf->Cell(45, 10, "Nombre", 1, 0, "C");
-$fpdf->Cell(28, 10, "Cantidad", 1, 0, "C");
+$fpdf->Cell(50, 10, "Nombre", 1, 0, "C");
+$fpdf->Cell(25, 10, "Cantidad", 1, 0, "C");
 $fpdf->Cell(30, 10, "Precio", 1, 0, "C");
-$fpdf->Cell(42, 10, "Descripcion", 1, 0, "C");
+$fpdf->Cell(52, 10, "Descripcion", 1, 0, "C");
 
 
 $fpdf->Line(20, 60, 200, 60);
@@ -56,16 +66,15 @@ $fpdf->SetFillColor(240,240,240);
 $fpdf->SetTextColor(40,40,40);
 $fpdf->SetDrawColor(255,255,255);
 
-$datos = $productos->HistorialCompra();
 foreach ($datos as $personas) {
     $fpdf->SetDrawColor(25,155,132);
-    $fpdf->SetX(10);
-    $fpdf->Cell(10, 10, " " . $personas['IdFactura']  ." ", 1, 0, "L",1);   
+    $fpdf->SetX(9);
+    $fpdf->Cell(12, 10, " " . $personas['IdFactura']  ." ", 1, 0, "L",1);   
     $fpdf->Cell(35, 10, " " . $personas['Nombre_categoria']  ." ", 1, 0, "L",1); 
-    $fpdf->Cell(45, 10, " " . $personas['Nombre_producto']  ." ", 1, 0, "L",1);
-    $fpdf->Cell(28, 10, " " . $personas['Cantidad_producto'].''  ." ", 1, 0, "C",1);
+    $fpdf->Cell(50, 10, " " . $personas['Nombre_producto']  ." ", 1, 0, "L",1);
+    $fpdf->Cell(25, 10, " " . $personas['Cantidad_producto'].''  ." ", 1, 0, "C",1);
     $fpdf->Cell(30, 10, " " . $personas['Precio_unitario'].'$'  ." ", 1, 0, "C",1); 
-    $fpdf->Cell(42, 10, " " . $personas['Descripcion']  ." ", 1, 0, "L",1); 
+    $fpdf->Cell(52, 10, " " .utf8_decode($personas['Descripcion'])  ." ", 1, 0, "L",1); 
     $fpdf->Ln(); 
 }
 

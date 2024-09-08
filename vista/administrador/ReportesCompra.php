@@ -3,6 +3,16 @@ require("../../fpdf/fpdf.php");
 require_once("../../modelo/GestionInventario.php");
 $productos = new Productos();
 
+$instruccion=$_GET['instruccion'];
+
+$resultado=Conexion::conexion()->prepare($instruccion);
+
+$resultado->execute(array());
+while($fila=$resultado->fetch(PDO::FETCH_ASSOC)){
+    $datos[]=$fila;
+}
+$productos = new Productos();
+
 class pdf extends FPDF
 {
     public function Header()
@@ -44,9 +54,9 @@ $fpdf->Cell(10, 10, "Id", 1, 0, "C");
 $fpdf->Cell(35, 10, "Proveedor rif", 1, 0, "C");
 $fpdf->Cell(28, 10, "Compra id", 1, 0, "C");
 $fpdf->Cell(30, 10, "Categoria", 1, 0, "C");
-$fpdf->Cell(35, 10, "Nombre", 1, 0, "C");
+$fpdf->Cell(52, 10, "Nombre", 1, 0, "C");
 $fpdf->Cell(25, 10, "Cantidad", 1, 0, "C");
-$fpdf->Cell(28, 10, "Precio", 1, 0, "C");
+$fpdf->Cell(20, 10, "Precio", 1, 0, "C");
 
 
 $fpdf->Line(20, 60, 200, 60);
@@ -57,7 +67,6 @@ $fpdf->SetFillColor(240,240,240);
 $fpdf->SetTextColor(40,40,40);
 $fpdf->SetDrawColor(255,255,255);
 
-$datos = $productos->MostrarProductosCompra();
 foreach ($datos as $personas) {
     $fpdf->SetDrawColor(25,155,132);
     $fpdf->SetX(10);
@@ -65,9 +74,9 @@ foreach ($datos as $personas) {
     $fpdf->Cell(35, 10, " " . $personas['Proveedor_rif']  ." ", 1, 0, "L",1);
     $fpdf->Cell(28, 10, " " . $personas['Compra_id']  ." ", 1, 0, "C",1);
     $fpdf->Cell(30, 10, " " . $personas['Nombre_categoria']  ." ", 1, 0, "L",1); 
-    $fpdf->Cell(35, 10, " " . $personas['Nombre_producto']  ." ", 1, 0, "L",1); 
+    $fpdf->Cell(52, 10, " " . $personas['Nombre_producto']  ." ", 1, 0, "L",1); 
     $fpdf->Cell(25, 10, " " . $personas['Cantidad_compra']  ." ", 1, 0, "C",1); 
-    $fpdf->Cell(28, 10, " " . $personas['Precio_producto']  ." ", 1, 0, "L",1); 
+    $fpdf->Cell(20, 10, " " ."$". $personas['Precio_producto']  ." ", 1, 0, "L",1); 
     $fpdf->Ln(); 
 }
 

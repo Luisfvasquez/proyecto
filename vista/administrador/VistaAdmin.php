@@ -31,7 +31,8 @@
     <h2><a href="../../controlador/GestionCategorias.php">Gestion Categorias</a></h2>
     <h2><a href="../../controlador/GestionMetodo.php">Gestion Metodo</a></h2>
     <h2><a href="../../controlador/GestionProveedor.php">Gestion Proveedor</a></h2>
-    <h2><a href="../../controlador/RegistroCompraVenta.php">Registros de compras y ventas</a></h2>
+    <h2><a href="../../controlador/RegistrosCompra.php">Registros de compras</a></h2>
+    <h2><a href="../../controlador/RegistroVenta.php">Registros de ventas</a></h2>
     <h2><a href="../../controlador/GestionInventario.php">Gestion del inventario</a></h2>
     
 

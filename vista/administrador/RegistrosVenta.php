@@ -7,8 +7,8 @@
     <title>Registros</title>
     <link rel="stylesheet" href="../estilos/bootstrap.min.css">
 </head>
-<?php
 
+<?php
  require_once("../modelo/Conexion.php");
     $conexion=Conexion::conexion();
     if(!isset($_POST['PrecioDesde'])){$_POST['PrecioDesde']="";};
@@ -17,14 +17,15 @@
     if(!isset($_POST['FechaHasta'])){$_POST['FechaHasta']="";};
     if(!isset($_POST['order'])){$_POST['order']="";};
     if(!isset($_POST['BuscarCategoria'])){$_POST['BuscarCategoria']="";};
-    $usuario=$_SESSION['usuario'];
+
 
 ?>
 
 <body>
 
     <?php
-    if (!isset($_SESSION['usuario'])) {
+    session_start();
+    if (!isset($_SESSION['admin'])) {
         header("location:../InicioSesion.php");
     }
     ?>
@@ -33,14 +34,14 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <a href="../vista/usuario/perfil.php" class="btn btn-primary">Volver</a>
+                <a href="../vista/administrador/VistaAdmin.php" class="btn btn-primary">Volver</a>
             </div>
         </div>
-
+        
         <h2>Generar reporte con filtro</h2>
         <div class="row">            
             <div class="col">
-               <form action="" method="POST">
+               <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
                 <table class="table">
                         <thead>
                             <tr>
@@ -88,8 +89,8 @@
                                         <option value="2">Precio Menor a mayor</option>
                                         <option value="3">Fecha Mayor a menor</option>
                                         <option value="4">Fecha Menor a mayor</option>
-                                        <option value="5">IdFactura Mayor a menor</option>
-                                        <option value="6">IdFactura Menor a mayor</option>
+                                        <option value="5">Factura Mayor a menor</option>
+                                        <option value="6">factura Menor a mayor</option>
                                         <option value="7">Cantidad Mayor a menor</option>
                                         <option value="8">Cantidad Menor a mayor</option>                                      
                                     </select>
@@ -101,60 +102,58 @@
                     <?php
                     if($_POST['BuscarCategoria']=="" && $_POST['PrecioDesde']=="" && $_POST['PrecioHasta']=="" && $_POST['FechaDesde']=="" && $_POST['FechaHasta']=="" && $_POST['order']==""){
                         $instruccion = ("SELECT * FROM Detalles_factura 
-                           INNER JOIN Factura ON detalles_factura.Factura_id= factura.IdFactura
-                           INNER JOIN Producto ON detalles_factura.Producto_id= producto.IdProducto
-                           INNER JOIN Categoria ON producto.Categoria_id= categoria.IdCategoria 
-                           WHERE Factura.Usuario_cedula=$usuario" );
+                        INNER JOIN Factura ON detalles_factura.Factura_id= factura.IdFactura
+                        INNER JOIN Producto ON detalles_factura.Producto_id= producto.IdProducto
+                        INNER JOIN Categoria On Producto.Categoria_id=categoria.idCategoria" );
                      }else{
                         $instruccion = ("SELECT * FROM Detalles_factura 
-                           INNER JOIN Factura ON detalles_factura.Factura_id= factura.IdFactura
-                           INNER JOIN Producto ON detalles_factura.Producto_id= producto.IdProducto
-                           INNER JOIN Categoria ON producto.Categoria_id= categoria.IdCategoria 
-                           WHERE Factura.Usuario_cedula=$usuario" );
-                    
+                        INNER JOIN Factura ON detalles_factura.Factura_id= factura.IdFactura
+                        INNER JOIN Producto ON detalles_factura.Producto_id= producto.IdProducto
+                        INNER JOIN Categoria On Producto.Categoria_id=categoria.idCategoria" );
+                     
                      //Filtros de busqueda
-                     if($_POST['BuscarCategoria']!=""){
-                        $instruccion.= " AND categoria.Nombre_categoria = '".$_POST['BuscarCategoria']."'";
-                    }
-                    if($_POST['FechaDesde']!=""){
-                        $instruccion.= " AND Factura.fecha BETWEEN '".$_POST['FechaDesde']."' AND '".$_POST['FechaHasta']."'";
-                    }
-                    if($_POST['PrecioDesde']!=""){
-                        $instruccion.= " AND detalles_factura.Precio_unitario >= '".$_POST['PrecioDesde']."'";
-                    }
-                    if($_POST['PrecioHasta']!=""){
-                        $instruccion.= " AND detalles_factura.Precio_unitario <= '".$_POST['PrecioHasta']."'";
-                    }
-                    //Campos del order
-                    if($_POST['order']=="1"){
-                        $instruccion.= " ORDER BY detalles_factura.Precio_unitario DESC";
-                    }
-                    if($_POST['order']=="2"){
-                        $instruccion.= " ORDER BY detalles_factura.Precio_unitario ASC";
-                    }
-                    if($_POST['order']=="3"){
-                        $instruccion.= " ORDER BY Factura.fecha DESC";
-                    }
-                    if($_POST['order']=="4"){
-                        $instruccion.= " ORDER BY Factura.fecha ASC";
-                    }
-                    if($_POST['order']=="5"){
-                        $instruccion.= " ORDER BY factura.IdFactura DESC";
-                    }
-                    if($_POST['order']=="6"){
-                        $instruccion.= " ORDER BY factura.IdFactura ASC";
-                    }
-                    if($_POST['order']=="7"){
-                        $instruccion.= " ORDER BY detalles_factura.Cantidad_producto DESC";
-                    }
-                    if($_POST['order']=="8"){
-                        $instruccion.= " ORDER BY detalles_factura.Cantidad_producto ASC";
-                    }
+                        if($_POST['BuscarCategoria']!=""){
+                            $instruccion.= " WHERE categoria.Nombre_categoria = '".$_POST['BuscarCategoria']."'";
+                        }
+                        if($_POST['FechaDesde']!=""){
+                            $instruccion.= " AND Factura.fecha BETWEEN '".$_POST['FechaDesde']."' AND '".$_POST['FechaHasta']."'";
+                        }
+                        if($_POST['PrecioDesde']!=""){
+                            $instruccion.= " AND detalles_factura.Precio_unitario >= '".$_POST['PrecioDesde']."'";
+                        }
+                        if($_POST['PrecioHasta']!=""){
+                            $instruccion.= " AND detalles_factura.Precio_unitario <= '".$_POST['PrecioHasta']."'";
+                        }
+                        //Campos del order
+                        if($_POST['order']=="1"){
+                            $instruccion.= " ORDER BY detalles_factura.Precio_unitario DESC";
+                        }
+                        if($_POST['order']=="2"){
+                            $instruccion.= " ORDER BY detalles_factura.Precio_unitario ASC";
+                        }
+                        if($_POST['order']=="3"){
+                            $instruccion.= " ORDER BY Factura.fecha DESC";
+                        }
+                        if($_POST['order']=="4"){
+                            $instruccion.= " ORDER BY Factura.fecha ASC";
+                        }
+                        if($_POST['order']=="5"){
+                            $instruccion.= " ORDER BY factura.IdFactura DESC";
+                        }
+                        if($_POST['order']=="6"){
+                            $instruccion.= " ORDER BY factura.IdFactura ASC";
+                        }
+                        if($_POST['order']=="7"){
+                            $instruccion.= " ORDER BY detalles_factura.Cantidad_producto DESC";
+                        }
+                        if($_POST['order']=="8"){
+                            $instruccion.= " ORDER BY detalles_factura.Cantidad_producto ASC";
+                        }
                     }
                     $resultado=$conexion->prepare($instruccion);
                     $resultado->execute(array());
                     while($fila=$resultado->fetch(PDO::FETCH_ASSOC)){
-                        $datos[]=$fila;
+                        $venta[]=$fila;
                     }
                     $reporte = $instruccion;
                     ?>
@@ -165,48 +164,72 @@
 
         <div class="row mt-4">
             <div class="col">
-                <h2>Compra Historial</h2>
+                <h2>Historial de Venta</h2>
 
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Id de la factura</th>
-                            <th>Producto Id</th>
+                            <th>Factura Id</th>
+                            <th>Cliente</th>
+                            <th>Id Producto</th>
                             <th>Nombre</th>
-                            <th>Cantidad</th>
-                            <th>Precio de compra</th>
-                            <th>Categoria</th>
-                            <th>Descripción</th>
+                            <th>Cantidad vendida</th>
+                            <th>Precio unitario</th>
                             <th>Fecha</th>
-                            <th>Ref</th>
+                            <th>Monto Total</th>
+                            <th>Método</th>
                         </tr>
                     </thead>
-                    <?php
-                        if(isset($datos)){foreach ($datos as $producto_compra ) : ?>
-                    <?php  $fecha=date("y-m-d",strtotime($producto_compra['Fecha'])); ?>
+                    <?php if(isset($venta)){foreach ($venta as $producto_venta) : ?>
+                        <?php   $fecha=date("y-m-d",strtotime($producto_venta['Fecha'])); ?>
                         <tbody>
                             <tr>
-                                <td><?php echo $producto_compra['IdFactura'] ?></td>
-                                <td><?php echo $producto_compra['IdProducto'] ?></td>
-                                <td><?php echo $producto_compra['Nombre_producto'] ?></td>
-                                <td><?php echo $producto_compra['Cantidad_producto'] ?></td>
-                                <td><?php echo "$". $producto_compra['Precio_unitario'] ?></td>
-                                <td><?php echo $producto_compra['Nombre_categoria'] ?></td>
-                                <td><?php echo $producto_compra['Descripcion'] ?></td>
+                                <td><?php echo $producto_venta['IdFactura'] ?></td>
+                                <td><?php echo $producto_venta['Usuario_cedula'] ?></td>
+                                <td><?php echo $producto_venta['IdProducto'] ?></td>
+                                <td><?php echo $producto_venta['Nombre_producto'] ?></td>
+                                <td><?php echo $producto_venta['Cantidad_producto'] ?></td>
+                                <td><?php echo "$" . $producto_venta['Precio_unitario'] ?></td>
                                 <td><?php echo $fecha ?></td>
-                                <td><?php echo $producto_compra['Referencia'] ?></td>
+
+                                <td>
+
+                                    <?php
+                                    // Buscar el método de pago correspondiente
+                                    foreach ($metodo as $m) {
+                                        if ($m['Factura_id'] == $producto_venta['IdFactura']) {
+                                            echo "$" . $m['Monto_total'];
+                                            break; // Salir del bucle una vez encontrado el método
+                                        }
+                                    }
+                                    ?>
+
+                                </td>
+                                <td>
+                                <?php
+                                    // Buscar el método de pago correspondiente
+                                    foreach ($metodo as $m) {
+                                  //compara si el id de la factura del metodo es igual al id de la factura de la venta
+                                        if ($m['Factura_id'] == $producto_venta['IdFactura']) {
+                                            echo $m['Metodo'];
+                                            break; // Salir del bucle una vez encontrado el método
+                                        }
+                                    }
+                                    ?>
+                                </td>
+
+
                             </tr>
                         </tbody>
-                    <?php endforeach;}else{
-                        echo "No hay registros con esas especificaciones";
-                    } ?>
+                    <?php endforeach; }else{
+                        echo "<p>No hay registros</p>";}?>
                 </table>
-                <a href="../vista/usuario/ReportesCompraUsuario.php?instruccion=<?php echo $instruccion?>" class="btn btn-secondary">Reportes de Compra</a>
-       
-            </div>
-        
-        </div>
 
+            </div>
+        </div>
+        <a href="../vista/administrador/ReportesVenta.php?instruccion=<?php echo $instruccion?>" class="btn btn-secondary">Reportes de Venta</a>
+    </div>
+         
     <script src="../estilos/bootstrap.bundle.min.js"></script>
 </body>
 

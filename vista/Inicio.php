@@ -18,12 +18,13 @@
     <?php
     session_start();
     if (isset($_SESSION['usuario']) or isset($_SESSION['admin'])) {
-        header("location:InicioSesion.php");
+       
         if (isset($_SESSION['admin'])) {
             header("location:vista/administrador/VistaAdmin.php");
         } else {
             header("location:vista/usuario/VistaUsuario.php");
         }
+        header("location:InicioSesion.php");
     }
 
     ?>
@@ -69,15 +70,25 @@
 
     <div class="cartas">
         <?php foreach ($matriz as $producto): ?>
+           
             <div class="card" style="width: 18rem;">
                 <img src="/proyecto-v1/imgs/<?php echo $producto['Imagen'] ?>" class="card-img-top"alt="img producto" width="100px">
-                
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $producto['Nombre_producto'] ?></h5>
                     <p class="card-text"><?php echo $producto['Descripcion'] ?></p>
-                    <p class="card-text"><?php $precio_total = $producto['Precio_producto'] + ($producto['Precio_producto'] * 0.3);
-                    echo $precio_total;
+                    <p class="card-text">
+                    <?php
+                     foreach ($precio as $p) {
+                        //compara si el id de la factura del metodo es igual al id de la factura de la venta
+                              if ($p['Producto_id'] == $producto['IdProducto']) {
+                                  echo $p['precio_maximo'];
+                                  break; // Salir del bucle una vez encontrado el método
+                              }
+                          }
+                    
                     ?>$</p>
+                    
+                    
                     <a href="vista/InicioSesion.php"><input type="button" value="Comprar" class="btn btn-primary"></a>
                 </div>
                 <div class="card-footer">

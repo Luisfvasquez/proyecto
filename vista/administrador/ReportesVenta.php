@@ -1,6 +1,16 @@
 <?php
 require("../../fpdf/fpdf.php");
 require_once("../../modelo/GestionInventario.php");
+require_once("../../modelo/Conexion.php");
+
+$instruccion=$_GET['instruccion'];
+
+$resultado=Conexion::conexion()->prepare($instruccion);
+
+$resultado->execute(array());
+while($fila=$resultado->fetch(PDO::FETCH_ASSOC)){
+    $datos[]=$fila;
+}
 $productos = new Productos();
 
 class pdf extends FPDF
@@ -44,7 +54,6 @@ $fpdf->SetFontSize(14);
 
 
 
-$datos = $productos->MostrarProductosVenta();
 $metodo = $productos->Metodo();
 foreach ($datos as $personas) {
    
@@ -146,8 +155,8 @@ foreach ($datos as $personas) {
     $fpdf->SetTextColor(40,40,40);
     $fpdf->SetDrawColor(255,255,255);
     $fpdf->SetDrawColor(25,155,132);
-
-    $fpdf->Cell(50, 10, " " . $personas['Fecha']  ." ", 1, 0, "C",1);
+      $fecha=date("y-m-d",strtotime($personas['Fecha'])); 
+    $fpdf->Cell(50, 10, " " . $fecha  ." ", 1, 0, "C",1);
     $fpdf->Ln();
 
    

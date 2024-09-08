@@ -80,7 +80,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="nombre_producto">Nombre del producto de compra</label>
-                                <input required type="text" class="form-control" name="nombre_producto" id="nombre_producto" placeholder="Nombre del producto">
+                                <input required type="text" class="form-control" name="nombre_producto" id="nombre_producto" placeholder="Nombre del producto" maxlength="20">
                             </div>
                             <div class="form-group">
                                 <label for="descripcion">Descripción de producto</label>

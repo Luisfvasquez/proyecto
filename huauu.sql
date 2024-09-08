@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 02-08-2024 a las 14:44:01
+-- Tiempo de generación: 08-09-2024 a las 16:13:29
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -57,8 +57,9 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`IdCompra`, `Proveedor_rif`, `Fecha`) VALUES
-(1, 29839550, '2024-08-02 14:40:11'),
-(2, 29839550, '2024-08-02 14:41:42');
+(1, 29839550, '2024-09-07 20:51:07'),
+(2, 29839550, '2024-09-07 20:51:16'),
+(3, 29839550, '2024-09-07 21:08:51');
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,8 @@ CREATE TABLE `detalles_compra` (
 
 INSERT INTO `detalles_compra` (`Compra_id`, `Producto_id`, `Cantidad_compra`, `Precio_producto`) VALUES
 (1, 1, 10, 10.00),
-(2, 2, 10, 15.00);
+(2, 2, 10, 10.00),
+(3, 3, 10, 10.00);
 
 -- --------------------------------------------------------
 
@@ -99,9 +101,8 @@ CREATE TABLE `detalles_factura` (
 --
 
 INSERT INTO `detalles_factura` (`Factura_Id`, `Producto_Id`, `Cantidad_producto`, `Precio_unitario`) VALUES
-(1, 1, 1, 13.00),
-(2, 2, 5, 19.50),
-(2, 1, 1, 13.00);
+(1, 1, 2, 13.00),
+(1, 2, 3, 13.00);
 
 -- --------------------------------------------------------
 
@@ -112,16 +113,16 @@ INSERT INTO `detalles_factura` (`Factura_Id`, `Producto_Id`, `Cantidad_producto`
 CREATE TABLE `factura` (
   `IdFactura` int NOT NULL,
   `Usuario_cedula` int NOT NULL,
-  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Referencia` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `factura`
 --
 
-INSERT INTO `factura` (`IdFactura`, `Usuario_cedula`, `Fecha`) VALUES
-(1, 28329308, '2024-08-02 14:43:25'),
-(2, 28329308, '2024-08-02 14:43:38');
+INSERT INTO `factura` (`IdFactura`, `Usuario_cedula`, `Fecha`, `Referencia`) VALUES
+(1, 28329308, '2024-09-07 20:56:26', 6707);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,8 @@ CREATE TABLE `inventario` (
 
 INSERT INTO `inventario` (`Producto_id`, `Cantidad_inventario`) VALUES
 (1, 8),
-(2, 5);
+(2, 7),
+(3, 10);
 
 -- --------------------------------------------------------
 
@@ -159,8 +161,7 @@ CREATE TABLE `metodopago_factura` (
 --
 
 INSERT INTO `metodopago_factura` (`Factura_id`, `MetodoPago_id`, `Monto_total`) VALUES
-(1, 2, 13.00),
-(2, 1, 110.50);
+(1, 2, 65.00);
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,7 @@ INSERT INTO `metodo_de_pago` (`idMetodo`, `Metodo`) VALUES
 CREATE TABLE `producto` (
   `IdProducto` int NOT NULL,
   `Categoria_id` int NOT NULL,
-  `Nombre_producto` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Nombre_producto` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Descripcion` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `Imagen` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Status` tinyint(1) NOT NULL
@@ -201,8 +202,9 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`IdProducto`, `Categoria_id`, `Nombre_producto`, `Descripcion`, `Imagen`, `Status`) VALUES
-(1, 1, 'Shampoo', 'Para perros', 'Huauu1.png', 1),
-(2, 2, 'Comida', 'Para gatos', 'Huauu1.png', 1);
+(1, 1, 'Comida para perros', 'Muy rica ñomi ñomi', 'Huauu1.png', 1),
+(2, 2, 'Comida para gatos', 'Muy rica ñomi ñomi', 'Huauu1.png', 1),
+(3, 1, 'Shampoo', 'Lavado Cabello', 'Huauu1.png', 0);
 
 -- --------------------------------------------------------
 
@@ -364,13 +366,13 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `IdCompra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdCompra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `IdFactura` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdFactura` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `metodo_de_pago`
@@ -382,7 +384,7 @@ ALTER TABLE `metodo_de_pago`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `IdProducto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdProducto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`

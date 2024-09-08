@@ -6,6 +6,8 @@
         private $venta;
         private $metodo;
         private $inventario;
+        private $precio;
+        private $cantidad;
 
         public function __construct()
         {
@@ -15,6 +17,8 @@
             $this->compra=array();
             $this->venta=array();
             $this->metodo=array();
+            $this->precio=array();
+            $this->cantidad=array();
         }
 
         public function MostrarProductoscliente(){//Metodo que se encarga de mostrar los productos disponibles para la venta
@@ -23,22 +27,28 @@
             //Y calcula el precio de venta directamente
             //Se obtiene solamante los productos que estan en stock a partir del status
 
-            $instruccion = ("SELECT *,(Precio_producto+Precio_producto*0.3) AS precio FROM Detalles_compra 
-            INNER JOIN Compra ON detalles_compra.Compra_id= Compra.IdCompra
-              INNER JOIN Producto ON detalles_compra.Producto_id= producto.IdProducto
+            $instruccion = ("SELECT * FROM Producto
             INNER JOIN Categoria ON Producto.Categoria_id= Categoria.idCategoria
              WHERE Status=1 ");
+             
+            $instruccion2 = ("SELECT Producto_id, MAX(Precio_producto+(Precio_producto*0.30)) AS precio_maximo
+                FROM detalles_compra
+                GROUP BY Producto_id");
 
             //prepara la instruccion
             $resultado = $this->db->prepare($instruccion);
+            $resultado2 = $this->db->prepare($instruccion2);
             $resultado->execute(array());//Ejecuta la instruccion
+            $resultado2->execute(array());//Ejecuta la instruccion
 
             //Almacena los datos en un arreglo
             while($filas=$resultado->fetch(PDO::FETCH_ASSOC)){
                 $this->compra[]=$filas;
             }
-
-            return $this->compra;//Retorna el arreglo con los datos
+            while($filas=$resultado2->fetch(PDO::FETCH_ASSOC)){
+                $this->precio[]=$filas;
+            }
+           return array($this->compra,$this->precio);//Retorna el arreglo con los datos
         }
 
         public function MostrarProductosCompra(){//Metodo que se encarga de mostrar productos comprados
@@ -48,8 +58,7 @@
             INNER JOIN Compra ON detalles_compra.Compra_id= Compra.IdCompra
             INNER JOIN Proveedor ON Compra.Proveedor_rif= Proveedor.Rif
             INNER JOIN Producto ON detalles_compra.Producto_id= producto.IdProducto
-            INNER JOIN Categoria ON Producto.Categoria_id= Categoria.idCategoria" );
-
+            INNER JOIN Categoria ON Producto.Categoria_id= Categoria.idCategoria");
             //prepara la instruccion
             $resultado = $this->db->prepare($instruccion);
             $resultado->execute(array());//Ejecuta la instruccion
@@ -115,5 +124,16 @@
             
 
         }
+        //Obtiene la cantidad de productos disponibles para la compra mediante el inventario
+        public function Cantidad(){
+            $instruccion = ("SELECT * FROM inventario"); 
+            $resultado = $this->db->prepare($instruccion);
+            $resultado->execute(array());//Ejecuta la instruccion
+            while($filas=$resultado->fetch(PDO::FETCH_ASSOC)){
+               $this->cantidad[]=$filas;
+           }
+           return  $this->cantidad;
+       }
+
 
     }

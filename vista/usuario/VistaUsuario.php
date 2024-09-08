@@ -78,20 +78,36 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $producto['Nombre_producto'] ?></h5>
                     <p class="card-text"><?php echo $producto['Descripcion'] ?></p>
-                    <p class="card-text"><?php $precio_total = $producto['Precio_producto'] + ($producto['Precio_producto'] * 0.3);
-                                            echo $precio_total;
-                                            ?>$</p>
+                    <p class="card-text">
+                    <?php
+                     foreach ($precio as $p) {
+                        //compara si el id de la factura del metodo es igual al id de la factura de la venta
+                              if ($p['Producto_id'] == $producto['IdProducto']) {
+                                  echo $p['precio_maximo'];
+                                  $precio_total= $p['precio_maximo'];
+                                  break; // Salir del bucle una vez encontrado el método
+                              }
+                          }
+                    
+                    ?>$</p>
 
                     <form action="" method="post">
                         <input type="hidden" name="idproducto" id="" value="<?php echo $producto['IdProducto'] ?>">
                         <input type="hidden" name="nombre_producto" id="" value="<?php echo $producto['Nombre_producto'] ?>">
                         <input type="hidden" name="descripcion" id="" value="<?php echo $producto['Descripcion'] ?>">
-                        <input type="hidden" name="precio" id="" value="<?php $precio_total = $producto['Precio_producto'] + ($producto['Precio_producto'] * 0.3);
+                        <input type="hidden" name="precio" id="" value="<?php 
                                                                         echo $precio_total;
                                                                         ?>">
                         <input type="hidden" name="nombre_categoria" id="" value="<?php echo $producto['Nombre_categoria'] ?>">
                         <p class="card-text" >Cantidad de compra:</p>
-                        <input  class="card-title" type="number" name="cantidad" id="cantidad" value="1" >
+                        <input  class="card-title" type="number" name="cantidad" id="cantidad" value="1" min="1" max="<?php 
+                                                                                foreach ($cantidad as $d) {
+                                                                                          if ($d['Producto_id'] == $producto['IdProducto']) {
+                                                                                              echo $d['Cantidad_inventario'];
+                                                                                              break; 
+                                                                                          }
+                                                                                      }
+                                                                                ?>">
                         
                         <input type="submit" value="Agregar al carrito" class="btn btn-primary" name="btnAccion">
                     </form>
@@ -133,10 +149,12 @@
         </footer>
 
     </footer>
-
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../estilos/inicio.js"></script>
 
+       
+             
 </body>
 
 </html>

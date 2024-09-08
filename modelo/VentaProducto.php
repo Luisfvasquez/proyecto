@@ -8,7 +8,7 @@
         private $cantidad_producto;
         private $precio_unitario;
         private $metodo_pago;
-        
+        private $referencia;
         private $monto_total;
 
         private $idFactura;
@@ -21,6 +21,9 @@
             //Almacena todos los datos recibidos en su respectiva variable
             $this->usuario=$_SESSION['usuario'];
             $this->metodo_pago=$_POST["metodo_id"];
+           $this->referencia= rand(1000,9999);
+           $_SESSION['referencia']=$this->referencia;
+           $_SESSION['metodo']=$_POST["metodo_id"];
         }
 
         public function Factura(){   //Registra la compra en la factura
@@ -28,9 +31,9 @@
         //y el metodo de pago
 
             //Instruccion a ejecutar en la BD
-            $instruccionFactura= ("INSERT INTO factura (Usuario_cedula,Fecha) VALUES (:usuario,NOW())");
+            $instruccionFactura= ("INSERT INTO factura (Usuario_cedula,Fecha,Referencia) VALUES (:usuario,NOW(),:referencia)");
             $resultadoFactura= $this->db->prepare($instruccionFactura);//prepara la instruccion
-            $resultadoFactura->execute(array(":usuario"=>$this->usuario));//Ejecuta la instruccion
+            $resultadoFactura->execute(array(":usuario"=>$this->usuario,":referencia"=>$this->referencia));//Ejecuta la instruccion
             $this->idFactura = $this->db->lastInsertId();//Obtiene el id de la factura que se acaba de registrar
                                              //el cual se usa para los detalles de la factura y el metodo de pago
         }

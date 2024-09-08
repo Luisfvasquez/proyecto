@@ -12,7 +12,7 @@ class Conexion
             $conexion->exec("SET CHARACTER SET utf8");
         } catch (Exception $e) { //Muestra los errores en la conexion hacia la BBDD
             die("Error en BBDD " . $e->getMessage());
-            echo "Erroe en linea " . $e->getLine();
+            echo "Error en linea " . $e->getLine();
         }
 
         return $conexion;
