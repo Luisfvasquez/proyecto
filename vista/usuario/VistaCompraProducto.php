@@ -21,7 +21,7 @@
     }
     echo $mensaje;
     ?>
-    <a href="../controlador/VistaUsuario.php">Volver</a>
+    <a href="../controlador/VistaUsuario.php" class="btn btn-success">Volver</a>
 
     <h1>Compra del producto</h1>
 

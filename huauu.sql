@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 08-09-2024 a las 16:13:29
+-- Tiempo de generación: 10-09-2024 a las 02:45:34
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -57,9 +57,10 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`IdCompra`, `Proveedor_rif`, `Fecha`) VALUES
-(1, 29839550, '2024-09-07 20:51:07'),
-(2, 29839550, '2024-09-07 20:51:16'),
-(3, 29839550, '2024-09-07 21:08:51');
+(1, 29839550, '2024-09-09 20:49:14'),
+(2, 29839550, '2024-09-09 20:49:35'),
+(3, 29839550, '2024-09-09 20:50:16'),
+(4, 29839550, '2024-09-09 20:54:22');
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,8 @@ CREATE TABLE `detalles_compra` (
 INSERT INTO `detalles_compra` (`Compra_id`, `Producto_id`, `Cantidad_compra`, `Precio_producto`) VALUES
 (1, 1, 10, 10.00),
 (2, 2, 10, 10.00),
-(3, 3, 10, 10.00);
+(3, 3, 10, 15.00),
+(4, 4, 8, 15.00);
 
 -- --------------------------------------------------------
 
@@ -101,8 +103,13 @@ CREATE TABLE `detalles_factura` (
 --
 
 INSERT INTO `detalles_factura` (`Factura_Id`, `Producto_Id`, `Cantidad_producto`, `Precio_unitario`) VALUES
-(1, 1, 2, 13.00),
-(1, 2, 3, 13.00);
+(1, 1, 1, 13.00),
+(1, 3, 2, 19.50),
+(2, 2, 2, 13.00),
+(2, 4, 1, 19.50),
+(3, 1, 1, 13.00),
+(3, 3, 1, 19.50),
+(4, 3, 4, 19.50);
 
 -- --------------------------------------------------------
 
@@ -122,7 +129,10 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`IdFactura`, `Usuario_cedula`, `Fecha`, `Referencia`) VALUES
-(1, 28329308, '2024-09-07 20:56:26', 6707);
+(1, 28329308, '2024-09-07 21:01:39', 4810),
+(2, 28329308, '2024-09-09 21:02:16', 8824),
+(3, 30995987, '2024-09-05 21:10:21', 9156),
+(4, 30995987, '2024-09-02 21:11:03', 3826);
 
 -- --------------------------------------------------------
 
@@ -141,8 +151,9 @@ CREATE TABLE `inventario` (
 
 INSERT INTO `inventario` (`Producto_id`, `Cantidad_inventario`) VALUES
 (1, 8),
-(2, 7),
-(3, 10);
+(2, 8),
+(3, 3),
+(4, 7);
 
 -- --------------------------------------------------------
 
@@ -161,7 +172,10 @@ CREATE TABLE `metodopago_factura` (
 --
 
 INSERT INTO `metodopago_factura` (`Factura_id`, `MetodoPago_id`, `Monto_total`) VALUES
-(1, 2, 65.00);
+(1, 1, 52.00),
+(2, 2, 45.50),
+(3, 2, 32.50),
+(4, 1, 78.00);
 
 -- --------------------------------------------------------
 
@@ -202,9 +216,10 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`IdProducto`, `Categoria_id`, `Nombre_producto`, `Descripcion`, `Imagen`, `Status`) VALUES
-(1, 1, 'Comida para perros', 'Muy rica ñomi ñomi', 'Huauu1.png', 1),
-(2, 2, 'Comida para gatos', 'Muy rica ñomi ñomi', 'Huauu1.png', 1),
-(3, 1, 'Shampoo', 'Lavado Cabello', 'Huauu1.png', 0);
+(1, 2, 'Shampoo Gatos', 'Buenisimo para el pelo', 'ShampooGato.png', 1),
+(2, 1, 'Shampoo Perros', 'Buenisimo para el pelo', 'ShampooPerro.png', 1),
+(3, 1, 'Comida Perros', 'Muy rica ñomi ñomi', 'ComidaPerro.png', 1),
+(4, 2, 'Comida Gatos', 'Muy rica ñomi ñomi', 'ComidaGato.png', 1);
 
 -- --------------------------------------------------------
 
@@ -267,7 +282,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`Cedula`, `Contrasenia`, `Nombre_usuario`, `Telefono`, `Correo`, `Rol_id`, `imagen`) VALUES
 (28329308, '$2y$10$3FpHAoeRqZ5jWimKdWTlHuKbhBcbhgu1a9pHjZAyIILei6KDwXIaO', 'jose', '04145018145', 'fasd@gasd.com', 3, 'persona3.png'),
-(29873955, '$2y$10$6852BNXk/p5wg/JCXP/0kuo5d1.Y4vq/NC8G/gA3jM9KV3Q9fmcIe', 'Luis', '04145018145', 'wueyluis@gmail.com', 2, 'persona3.png');
+(29873955, '$2y$10$6852BNXk/p5wg/JCXP/0kuo5d1.Y4vq/NC8G/gA3jM9KV3Q9fmcIe', 'Luis', '04145018145', 'wueyluis@gmail.com', 2, 'persona3.png'),
+(30995987, '$2y$10$4giOgjFcKUDDOv0jb7zi2O3HW43D.r7JmwhUPMqw8/an6Qjlw5BYW', 'Diego', '04128093019', 'DiegoRodrigues@gmail.com', 3, 'persona3.png');
 
 --
 -- Índices para tablas volcadas
@@ -366,13 +382,13 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `IdCompra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IdCompra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `IdFactura` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IdFactura` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `metodo_de_pago`
@@ -384,7 +400,7 @@ ALTER TABLE `metodo_de_pago`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `IdProducto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IdProducto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`

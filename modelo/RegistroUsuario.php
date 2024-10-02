@@ -75,7 +75,7 @@ class RegistroUsuarios{
     }
 
     public function RegistrarAdmin(){//Metodo que se encarga de registrar los datos
-        
+      
         //Instruccion a ejecutar en la BD
         $instruccion = "INSERT INTO usuario (Cedula,Contrasenia,Nombre_usuario,Telefono,Correo,Rol_id,imagen) VALUES (:cedula,:contrasenia,:nombre,:telefono,:correo,:rol,:foto)";
 
@@ -99,8 +99,14 @@ class RegistroUsuarios{
             }
                      
             //Ejecuta la instruccion
-            $resultado->execute(array(":cedula" => $this->cedula, ":contrasenia" => $this->cifrado, ":nombre" => $this->nombre, ":telefono" => $this->telefono,":correo" => $this->correo,":rol"=>2,":foto"=>$this->imagen));
-
+            
+                $resultado->execute(array(":cedula" => $this->cedula, ":contrasenia" => $this->cifrado, ":nombre" => $this->nombre, ":telefono" => $this->telefono,":correo" => $this->correo,":rol"=>2,":foto"=>$this->imagen));
+        
+                            
+            echo '<script type="text/javascript">alert("Usuario Existente");
+            window.location.href="../vista/RegistrUsuario.php";</script>) ';
+            
+           
        
             //Redirecciona a la pagina principal
    

@@ -88,8 +88,8 @@
                                         <option value="2">Precio Menor a mayor</option>
                                         <option value="3">Fecha Mayor a menor</option>
                                         <option value="4">Fecha Menor a mayor</option>
-                                        <option value="5">IdFactura Mayor a menor</option>
-                                        <option value="6">IdFactura Menor a mayor</option>
+                                        <option value="5">IdProducto Mayor a menor</option>
+                                        <option value="6">IdProducto Menor a mayor</option>
                                         <option value="7">Cantidad Mayor a menor</option>
                                         <option value="8">Cantidad Menor a mayor</option>                                      
                                     </select>
@@ -104,7 +104,8 @@
                            INNER JOIN Factura ON detalles_factura.Factura_id= factura.IdFactura
                            INNER JOIN Producto ON detalles_factura.Producto_id= producto.IdProducto
                            INNER JOIN Categoria ON producto.Categoria_id= categoria.IdCategoria 
-                           WHERE Factura.Usuario_cedula=$usuario" );
+                           WHERE Factura.Usuario_cedula=$usuario
+                           ORDER BY Producto.IdProducto" );
                      }else{
                         $instruccion = ("SELECT * FROM Detalles_factura 
                            INNER JOIN Factura ON detalles_factura.Factura_id= factura.IdFactura
@@ -136,10 +137,10 @@
                         $instruccion.= " ORDER BY Factura.fecha DESC";
                     }
                     if($_POST['order']=="4"){
-                        $instruccion.= " ORDER BY Factura.fecha ASC";
+                        $instruccion.= " ORDER BY Producto.IdProducto ASC";
                     }
                     if($_POST['order']=="5"){
-                        $instruccion.= " ORDER BY factura.IdFactura DESC";
+                        $instruccion.= " ORDER BY Producto.IdProducto DESC";
                     }
                     if($_POST['order']=="6"){
                         $instruccion.= " ORDER BY factura.IdFactura ASC";
@@ -169,8 +170,7 @@
 
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th>Id de la factura</th>
+                        <tr>                           
                             <th>Producto Id</th>
                             <th>Nombre</th>
                             <th>Cantidad</th>
@@ -186,7 +186,6 @@
                     <?php  $fecha=date("y-m-d",strtotime($producto_compra['Fecha'])); ?>
                         <tbody>
                             <tr>
-                                <td><?php echo $producto_compra['IdFactura'] ?></td>
                                 <td><?php echo $producto_compra['IdProducto'] ?></td>
                                 <td><?php echo $producto_compra['Nombre_producto'] ?></td>
                                 <td><?php echo $producto_compra['Cantidad_producto'] ?></td>

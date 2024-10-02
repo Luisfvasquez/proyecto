@@ -5,16 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/bootstrap.min.css">
+    <link rel="stylesheet" href="../estilos/vistaadmin.css">
     <title>Nueva Compra</title>
 </head>
 
-<body class="bg-light">
+<body >
+<header>
+        
+        <a href="../vista/administrador/VistaAdmin.php"><img src="../imgs/Huauu2.png" alt="loho"></a>
+       <p class="color"><a href="../controlador/CierreSesion.php">Cerrar Sesion</a></p> 
+        
+    </header>
     <?php
     session_start();
     if (!isset($_SESSION['admin'])) {
         header("location:InicioSesion.php");
     }
-    ?> <a href="../controlador/VistaCompra.php">Volver</a>
+    ?> 
     <div class="container mt-5">
 
         <div class="row justify-content-center">
@@ -53,9 +60,10 @@
                                     <p><strong>Precio de compra: </strong><input type="text" name="precio" id="precio"></p>
                                     <input type="submit" value="Comprar" class="btn btn-primary">
                                 </form>
-
-                            <?php endforeach; ?>
-
+                               
+                            <?php  break; endforeach; ?>
+<br>
+                            <a href="../controlador/VistaCompra.php" class="btn btn-secondary">Volver</a>
                         </div>
                     </div>
                 </div>

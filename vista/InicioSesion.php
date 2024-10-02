@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/iniciosesion.css">
-    
+    <link rel="stylesheet" href="../estilos/bootstrap.min.css">
     <title>Inicio Sesion</title>
 </head>
 <body>
-    <a href="../index.php " class="a">Home</a>
+ 
 
     <h1>Inicio Sesion</h1>    
 
@@ -18,9 +18,11 @@
         <input type="text" name="usuario" placeholder="usuario" required>
         <input type="password" name="contrasena" placeholder="contrasena" required>
         <input type="submit" value="Ingresar" id="boton">
-        <p class="message">No te has registrado? <a href="Registro.php">Crea una cuenta</a></p>
+        <p class="message">No te has registrado? <a href="Registro.php" class="btn btn-primary">Crea una cuenta</a></p>
       </form>
+      <a href="../index.php " class="btn btn-success">Home</a>
     </div>
+    
   </div>
 </body>
 </html>

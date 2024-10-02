@@ -51,7 +51,6 @@
         <div class="slider">
             <img src="../imgs/banner1.jpg" alt="Descripción de la imagen 1">
             <img src="../imgs/banner2.jpg" alt="Descripción de la imagen 2">
-            <img src="../imgs/banner3.jpg" alt="Descripción de la imagen 3">
         </div>
         <div class="texto-boton">
             <h2>lo mejor para tu mascota<br>porque sabemos cuanto los quieres</h2>

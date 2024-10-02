@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../estilos/bootstrap.min.css">
+  <link rel="stylesheet" href="../estilos/vistaadmin.css">
   <style>
     .avatar {
       width: 50px;
@@ -16,7 +17,13 @@
   <title>Gestion admin</title>
 </head>
 
-<body class="bg-light">
+<body >
+<header>
+        
+        <a href="../vista/administrador/VistaAdmin.php"><img src="../imgs/Huauu2.png" alt="loho"></a>
+       <p class="color"><a href="../controlador/CierreSesion.php">Cerrar Sesion</a></p> 
+        
+    </header>
   <?php 
     session_start();
     if(!isset($_SESSION['admin']) ){

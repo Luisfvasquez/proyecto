@@ -21,7 +21,8 @@
        
         if (isset($_SESSION['admin'])) {
             header("location:vista/administrador/VistaAdmin.php");
-        } else {
+        }
+        if(isset($_SESSION['usuario'])) {
             header("location:vista/usuario/VistaUsuario.php");
         }
         header("location:InicioSesion.php");

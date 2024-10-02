@@ -110,7 +110,8 @@
         public function InventarioStock(){
             $instruccion = ("SELECT * FROM inventario
             INNER JOIN Producto ON inventario.Producto_id= producto.IdProducto
-              INNER JOIN categoria ON producto.Categoria_id=categoria.idCategoria");
+              INNER JOIN categoria ON producto.Categoria_id=categoria.idCategoria
+              ORDER BY inventario.Producto_id");
 
             $resultado=$this->db->prepare($instruccion);
             $resultado->execute(array());

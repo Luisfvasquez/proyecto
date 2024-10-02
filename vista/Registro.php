@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/registrousuario.css">
+    <link rel="stylesheet" href="../estilos/bootstrap.min.css">
     <title>Registro de usuario</title>
 </head>
 <body>
-<a href="../index.php">Home</a>
 <h1>Registro de usuarios</h1>
     <div class="contenedor">
     <div class="registro">
@@ -27,6 +27,8 @@
             <br>
             <input type="submit" value="Registrar" class="boton">
         </form>
+        
+    <a href="../index.php" class="btn btn-success">Home</a>
     </div>
     </div>
 </body>
