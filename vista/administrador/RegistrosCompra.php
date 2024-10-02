@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros</title>
     <link rel="stylesheet" href="../estilos/bootstrap.min.css">
+    <link rel="stylesheet" href="../estilos/vistaadmin.css">
 </head>
 <?php
  require_once("../modelo/Conexion.php");
@@ -20,7 +21,12 @@
 
 ?>
 <body>
-
+<header>
+        
+        <a href="../vista/administrador/VistaAdmin.php"><img src="../imgs/Huauu2.png" alt="loho"></a>
+       <p class="color"><a href="../../controlador/CierreSesion.php">Cerrar Sesion</a></p> 
+        
+    </header>
     <?php
     session_start();
     if (!isset($_SESSION['admin'])) {
