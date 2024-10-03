@@ -15,7 +15,11 @@
 <header>
         
         <a href="../vista/administrador/VistaAdmin.php"><img src="../imgs/Huauu2.png" alt="loho"></a>
+<<<<<<< HEAD
        <p class="color"><a href="../controlador/CierreSesion.php">Cerrar Sesion</a></p> 
+=======
+       <p class="color"><a href="../../controlador/CierreSesion.php">Cerrar Sesion</a></p> 
+>>>>>>> dea4f175b568779a4f67f704f272a17672a0acf0
         
     </header>
   <?php
